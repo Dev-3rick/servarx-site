@@ -3,6 +3,7 @@ import { Hero } from '@/components/marketing/Hero';
 import { AntiClaim } from '@/components/marketing/AntiClaim';
 import { HowItWorks } from '@/components/marketing/HowItWorks';
 import { FoundersBanner } from '@/components/marketing/FoundersBanner';
+import { CTABanner } from '@/components/marketing/CTABanner';
 
 export const metadata: Metadata = {
   title: 'ServarX — IA conversacional pro Centro Médico do Interior',
@@ -17,6 +18,15 @@ export default function HomePage() {
       <AntiClaim />
       <HowItWorks />
       <FoundersBanner />
+      <CTABanner
+        eyebrow="É hora"
+        title="Pronto pra parar de perder paciente no WhatsApp?"
+        subtitle="30 dias de garantia. Sem fidelidade. A gente fala em até 24h."
+        ctaLabel="Falar com a gente"
+        ctaHref="/contato"
+        secondaryLabel="Ver planos"
+        secondaryHref="/produtos/servarclin"
+      />
     </>
   );
 }

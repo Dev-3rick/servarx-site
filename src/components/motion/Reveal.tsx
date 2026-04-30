@@ -11,7 +11,7 @@ interface RevealProps {
   variant?: RevealVariant;
   /** Delay em milissegundos pra fazer stagger entre elementos. */
   delay?: number;
-  /** Duração custom em segundos (default 0.7). */
+  /** Duração custom em segundos (default 1.1 — animação calma, cinematic). */
   duration?: number;
   /** Se true, anima ao montar (sem esperar viewport). Use no hero. */
   immediate?: boolean;
@@ -24,7 +24,7 @@ interface RevealProps {
 
 const VARIANTS: Record<RevealVariant, Variants> = {
   up: {
-    hidden: { opacity: 0, y: 28 },
+    hidden: { opacity: 0, y: 36 },
     visible: { opacity: 1, y: 0 },
   },
   fade: {
@@ -32,15 +32,15 @@ const VARIANTS: Record<RevealVariant, Variants> = {
     visible: { opacity: 1 },
   },
   scale: {
-    hidden: { opacity: 0, scale: 0.96 },
+    hidden: { opacity: 0, scale: 0.94 },
     visible: { opacity: 1, scale: 1 },
   },
   'slide-left': {
-    hidden: { opacity: 0, x: -28 },
+    hidden: { opacity: 0, x: -36 },
     visible: { opacity: 1, x: 0 },
   },
   'slide-right': {
-    hidden: { opacity: 0, x: 28 },
+    hidden: { opacity: 0, x: 36 },
     visible: { opacity: 1, x: 0 },
   },
 };
@@ -73,7 +73,7 @@ export function Reveal({
   children,
   variant = 'up',
   delay = 0,
-  duration = 0.7,
+  duration = 1.1,
   immediate = false,
   amount = 0.2,
   className,

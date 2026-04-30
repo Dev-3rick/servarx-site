@@ -52,7 +52,7 @@ export function HowItWorks() {
           {STEPS.map((step, i) => {
             const Icon = step.icon;
             return (
-              <Reveal key={step.title} variant="up" delay={i * 120} as="li">
+              <Reveal key={step.title} variant="up" delay={i * 200} as="li">
               <div
                 className="relative rounded-2xl border border-border bg-surface p-8 shadow-soft hover:shadow-medium transition-shadow h-full"
               >

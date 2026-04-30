@@ -38,7 +38,7 @@ export function Pricing() {
             <Reveal
               key={tier.slug}
               variant="up"
-              delay={i * 120}
+              delay={i * 200}
               as="article"
               className={cn(
                 'rounded-3xl border bg-surface p-8 flex flex-col relative',

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Calendar, MessageSquare, FileText, Check, X, ExternalLink, Mic, Image as ImageIcon, RefreshCw, Heart, Stethoscope, Languages } from 'lucide-react';
 import { LogoIA } from '@/components/brand/LogoIA';
 import { Pricing } from '@/components/marketing/Pricing';
+import { CTABanner } from '@/components/marketing/CTABanner';
 import { ProductLd } from '@/components/seo/JsonLd';
 import { SITE } from '@/lib/site';
 
@@ -228,6 +229,16 @@ export default function ServarClinPage() {
 
       {/* Pricing */}
       <Pricing />
+
+      <CTABanner
+        eyebrow="ÚLTIMA PARADA"
+        title="Pronto pra liberar sua agenda?"
+        subtitle="Em 5 minutos a gente te mostra como ficaria pra sua clínica. Garantia de 30 dias com reembolso."
+        ctaLabel="Falar com a gente"
+        ctaHref="/contato?ref=servarclin-final"
+        secondaryLabel="Já sou cliente"
+        secondaryHref={SITE.produto.appUrl}
+      />
     </>
   );
 }

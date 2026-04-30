@@ -54,7 +54,7 @@ export function FoundersBanner() {
             <Reveal
               key={idx}
               variant="up"
-              delay={idx * 80}
+              delay={idx * 130}
               className="aspect-[3/4] rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm flex flex-col items-center justify-center p-4 transition-colors hover:bg-white/10"
             >
               <div className="w-12 h-12 rounded-full border-2 border-dashed border-white/30 flex items-center justify-center mb-4">

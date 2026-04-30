@@ -10,7 +10,7 @@ export function Hero() {
       style={{ background: 'var(--gradient-hero-glow)' }}
     >
       <div className="max-w-page-xl mx-auto px-6 lg:px-12 py-20 lg:py-32 text-center">
-        <Reveal immediate variant="up" delay={0}>
+        <Reveal immediate variant="up" delay={0} duration={1.0}>
           <p
             className="mb-8 font-mono uppercase tracking-[0.18em] text-brand-cyan-600 inline-flex items-center gap-2"
             style={{ fontSize: 'var(--text-eyebrow)' }}
@@ -20,7 +20,7 @@ export function Hero() {
           </p>
         </Reveal>
 
-        <Reveal immediate variant="up" delay={120}>
+        <Reveal immediate variant="up" delay={200} duration={1.1}>
           <h1
             className="mb-8 font-bold tracking-tight text-brand-teal-800 leading-[1.05] mx-auto max-w-page-lg"
             style={{ fontSize: 'clamp(2.5rem, 6vw, var(--text-hero))' }}
@@ -40,14 +40,14 @@ export function Hero() {
           </h1>
         </Reveal>
 
-        <Reveal immediate variant="up" delay={240}>
+        <Reveal immediate variant="up" delay={420} duration={1.1}>
           <p className="mx-auto max-w-page-md text-lg leading-relaxed text-brand-neutral-muted lg:text-xl mb-12">
             Agende todos os médicos e atenda pacientes em áudio e texto, 24h por dia,
             sem pagar licenças extras por profissional.
           </p>
         </Reveal>
 
-        <Reveal immediate variant="up" delay={360}>
+        <Reveal immediate variant="up" delay={640} duration={1.1}>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row mb-8">
             <Link
               href="/contato"
@@ -65,7 +65,7 @@ export function Hero() {
           </div>
         </Reveal>
 
-        <Reveal immediate variant="fade" delay={500}>
+        <Reveal immediate variant="fade" delay={900} duration={1.2}>
           <p className="text-sm text-brand-neutral-muted inline-flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-brand-cyan-600" />
             30 dias de garantia · sem fidelidade · suporte humano em 10 minutos
