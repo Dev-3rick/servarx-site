@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'sonner';
 import './globals.css';
 import { SITE } from '@/lib/site';
 
@@ -71,6 +72,16 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-bg text-fg font-sans">
         {children}
+        <Toaster
+          position="top-center"
+          richColors
+          closeButton
+          toastOptions={{
+            classNames: {
+              toast: 'font-sans',
+            },
+          }}
+        />
       </body>
     </html>
   );

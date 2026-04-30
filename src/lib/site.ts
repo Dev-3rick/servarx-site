@@ -78,6 +78,71 @@ export const VALORES = [
 ] as const;
 
 /**
+ * Pricing do ServarClin (decidido em 2026-04-29 com base no relatório de
+ * pricing strategy). Estrutura final dos 3 tiers + setup fee + garantia.
+ */
+export const PRICING = {
+  setup: 499,
+  setupNarrativa:
+    'Serviço de Inteligência de Integração e Conformidade — engenheiros mapeando sua clínica',
+  garantiaDias: 30,
+  tiers: [
+    {
+      slug: 'automa',
+      nome: 'ServarClin Automa',
+      preco: 349,
+      publico: 'Clínicas pequenas / iniciais',
+      medicosLimite: 3,
+      mensagensLimite: 1000,
+      features: [
+        'WhatsApp 24h com IA',
+        'Agendamento e cancelamento',
+        'Confirmação automática de consulta',
+        'Histórico do paciente',
+        'Cifragem LGPD nível bancário',
+      ],
+      destaque: false,
+    },
+    {
+      slug: 'inteligencia',
+      nome: 'ServarClin Inteligência',
+      preco: 599,
+      publico: 'Clínicas em crescimento',
+      medicosLimite: 6,
+      mensagensLimite: 3000,
+      features: [
+        'Tudo do Automa',
+        'Motor de reagendamento ativo',
+        'Relatório de resgate de pacientes',
+        'Campanhas pós-consulta',
+        'Suporte prioritário',
+      ],
+      destaque: true,
+    },
+    {
+      slug: 'scale',
+      nome: 'ServarClin Scale',
+      preco: 947,
+      publico: 'Centros multidisciplinares consolidados',
+      medicosLimite: 10,
+      mensagensLimite: 7000,
+      features: [
+        'Tudo do Inteligência',
+        'Suporte VIP via WhatsApp (equipe direta)',
+        'Fine-tuning clínico contínuo',
+        'Integração com sistema legado',
+        'Onboarding assistido premium',
+      ],
+      destaque: false,
+    },
+  ],
+  addons: [
+    { nome: 'Pacote Volume', preco: 90, descricao: 'a cada 1.000 mensagens IA adicionais' },
+    { nome: 'Cadeira Extra', preco: 80, descricao: 'por médico extra além do limite do tier' },
+  ],
+} as const;
+
+/**
  * Cidades-alvo do Quadrilátero Ferrífero (geo-first).
  * Usadas em SEO local e landing pages futuras.
  */
