@@ -1,3 +1,5 @@
+import { Reveal } from '@/components/motion/Reveal';
+
 /**
  * Section "Não é só mais um SaaS. Não é só mais um atendente de IA."
  *
@@ -7,7 +9,8 @@ export function AntiClaim() {
   return (
     <section className="px-6 py-20 lg:px-12 lg:py-28 border-y border-border bg-surface">
       <div className="max-w-page-lg mx-auto text-center">
-        <p
+        <Reveal variant="up">
+          <p
           className="mb-8 font-mono uppercase tracking-[0.18em] text-brand-cyan-600"
           style={{ fontSize: 'var(--text-eyebrow)' }}
         >
@@ -27,6 +30,7 @@ export function AntiClaim() {
           IA que executa de verdade, dados de paciente cifrados nível bancário,
           e tom de voz brasileiro — não corporativês.
         </p>
+        </Reveal>
       </div>
     </section>
   );

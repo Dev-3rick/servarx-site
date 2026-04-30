@@ -1,4 +1,5 @@
 import { MessageSquare, Brain, CalendarCheck } from 'lucide-react';
+import { Reveal } from '@/components/motion/Reveal';
 
 const STEPS = [
   {
@@ -30,28 +31,30 @@ export function HowItWorks() {
   return (
     <section className="px-6 py-20 lg:px-12 lg:py-28">
       <div className="max-w-page-xl mx-auto">
-        <div className="text-center mb-16">
-          <p
-            className="mb-6 font-mono uppercase tracking-[0.18em] text-brand-cyan-600"
-            style={{ fontSize: 'var(--text-eyebrow)' }}
-          >
-            COMO FUNCIONA
-          </p>
-          <h2
-            className="font-bold tracking-tight text-brand-teal-800 leading-[1.1] mx-auto max-w-page-lg"
-            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}
-          >
-            Da mensagem do paciente até a agenda — sem ninguém precisar tocar.
-          </h2>
-        </div>
+        <Reveal variant="up">
+          <div className="text-center mb-16">
+            <p
+              className="mb-6 font-mono uppercase tracking-[0.18em] text-brand-cyan-600"
+              style={{ fontSize: 'var(--text-eyebrow)' }}
+            >
+              COMO FUNCIONA
+            </p>
+            <h2
+              className="font-bold tracking-tight text-brand-teal-800 leading-[1.1] mx-auto max-w-page-lg"
+              style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}
+            >
+              Da mensagem do paciente até a agenda — sem ninguém precisar tocar.
+            </h2>
+          </div>
+        </Reveal>
 
         <ol className="grid gap-6 lg:grid-cols-3">
           {STEPS.map((step, i) => {
             const Icon = step.icon;
             return (
-              <li
-                key={step.title}
-                className="relative rounded-2xl border border-border bg-surface p-8 shadow-soft hover:shadow-medium transition-shadow"
+              <Reveal key={step.title} variant="up" delay={i * 120} as="li">
+              <div
+                className="relative rounded-2xl border border-border bg-surface p-8 shadow-soft hover:shadow-medium transition-shadow h-full"
               >
                 <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-brand-teal-800 flex items-center justify-center font-mono text-sm font-bold text-brand-cyan-400">
                   {i + 1}
@@ -65,7 +68,8 @@ export function HowItWorks() {
                 <p className="text-brand-neutral-muted leading-relaxed">
                   {step.description}
                 </p>
-              </li>
+              </div>
+              </Reveal>
             );
           })}
         </ol>

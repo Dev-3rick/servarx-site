@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Check, Sparkles, ShieldCheck } from 'lucide-react';
+import { Reveal } from '@/components/motion/Reveal';
 import { PRICING } from '@/lib/site';
 import { cn } from '@/lib/cn';
 
@@ -10,30 +11,35 @@ export function Pricing() {
   return (
     <section className="px-6 py-20 lg:px-12 lg:py-28">
       <div className="max-w-page-xl mx-auto">
-        <div className="text-center mb-12">
-          <p
-            className="mb-6 font-mono uppercase tracking-[0.18em] text-brand-cyan-600"
-            style={{ fontSize: 'var(--text-eyebrow)' }}
-          >
-            PLANOS · ESCOLHA O DA SUA CLÍNICA
-          </p>
-          <h2
-            className="font-bold tracking-tight text-brand-teal-800 leading-[1.1] mx-auto max-w-page-lg mb-4"
-            style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}
-          >
-            Mensalidade fixa por clínica — não por médico.
-          </h2>
-          <p className="text-brand-neutral-muted max-w-page-md mx-auto text-base lg:text-lg leading-relaxed">
-            Você paga pela clínica. Não importa se tem 1 ou 10 médicos atendendo.
-            Sem licença extra escondida.
-          </p>
-        </div>
+        <Reveal variant="up">
+          <div className="text-center mb-12">
+            <p
+              className="mb-6 font-mono uppercase tracking-[0.18em] text-brand-cyan-600"
+              style={{ fontSize: 'var(--text-eyebrow)' }}
+            >
+              PLANOS · ESCOLHA O DA SUA CLÍNICA
+            </p>
+            <h2
+              className="font-bold tracking-tight text-brand-teal-800 leading-[1.1] mx-auto max-w-page-lg mb-4"
+              style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)' }}
+            >
+              Mensalidade fixa por clínica — não por médico.
+            </h2>
+            <p className="text-brand-neutral-muted max-w-page-md mx-auto text-base lg:text-lg leading-relaxed">
+              Você paga pela clínica. Não importa se tem 1 ou 10 médicos atendendo.
+              Sem licença extra escondida.
+            </p>
+          </div>
+        </Reveal>
 
         {/* Cards dos 3 tiers */}
         <div className="grid gap-6 lg:grid-cols-3 mb-10">
-          {PRICING.tiers.map((tier) => (
-            <article
+          {PRICING.tiers.map((tier, i) => (
+            <Reveal
               key={tier.slug}
+              variant="up"
+              delay={i * 120}
+              as="article"
               className={cn(
                 'rounded-3xl border bg-surface p-8 flex flex-col relative',
                 tier.destaque
@@ -88,12 +94,12 @@ export function Pricing() {
               >
                 Falar sobre o {tier.nome.replace('ServarClin ', '')}
               </Link>
-            </article>
+            </Reveal>
           ))}
         </div>
 
         {/* Setup + garantia */}
-        <div className="grid gap-4 md:grid-cols-2 mb-8">
+        <Reveal variant="up" className="grid gap-4 md:grid-cols-2 mb-8">
           <div className="rounded-2xl border border-border bg-brand-neutral-bg p-6">
             <p className="font-mono text-xs uppercase tracking-wider text-brand-neutral-light mb-2">
               Implantação assistida (única)
@@ -118,10 +124,10 @@ export function Pricing() {
               Não gostou? A gente devolve o valor da mensalidade. Sem perguntas, sem letrinha miúda.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Add-ons */}
-        <div className="rounded-2xl border border-border bg-surface px-6 py-5">
+        <Reveal variant="fade" className="rounded-2xl border border-border bg-surface px-6 py-5">
           <p className="font-mono text-xs uppercase tracking-wider text-brand-neutral-light mb-3">
             Add-ons (cobrados só se usar)
           </p>
@@ -134,7 +140,7 @@ export function Pricing() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
 
         {/* Limit nota */}
         <p className="mt-6 text-center text-sm text-brand-neutral-muted">
