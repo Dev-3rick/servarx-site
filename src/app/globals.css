@@ -1,26 +1,178 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================================
+ * ServarX — Design tokens (herdados e adaptados do ServarClin v2)
+ * ----------------------------------------------------------------------------
+ * Família visual: mesma paleta cyan/teal do ServarClin, mas com TEAL-800
+ * protagonista (ServarX é a empresa-mãe, sóbria/corporate). ServarClin usa
+ * cyan-600 protagonista.
+ * Toda mudança de marca passa por aqui. Componentes consomem via classes
+ * Tailwind ou via var(--token).
+ * ========================================================================== */
+
+@theme {
+  /* Tipografia ─────────────────────────────────────────────────────────── */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Marca · cyan (accent) ─────────────────────────────────────────────── */
+  --color-brand-cyan-50:  #ecfeff;
+  --color-brand-cyan-100: #cffafe;
+  --color-brand-cyan-200: #a5f3fc;
+  --color-brand-cyan-300: #67e8f9;
+  --color-brand-cyan-400: #22d3ee;
+  --color-brand-cyan-500: #0891b2;
+  --color-brand-cyan-600: #0e7490;
+  --color-brand-cyan-700: #155e75;
+
+  /* Marca · teal (PROTAGONISTA da ServarX) ────────────────────────────── */
+  --color-brand-teal-600: #0e7490;
+  --color-brand-teal-700: #0e4d5c;
+  --color-brand-teal-800: #062832;
+  --color-brand-teal-900: #041e26;
+
+  /* Neutras ────────────────────────────────────────────────────────────── */
+  --color-brand-neutral-bg:           #f0f7fa;
+  --color-brand-neutral-surface:      #ffffff;
+  --color-brand-neutral-surface-alt:  #f8fafb;
+  --color-brand-neutral-border:       #dde8ef;
+  --color-brand-neutral-text:         #0a1628;
+  --color-brand-neutral-muted:        #5c7a9a;
+  --color-brand-neutral-light:        #9bb5c8;
+
+  /* Status semânticos ──────────────────────────────────────────────────── */
+  --color-success-solid: #10b981;
+  --color-success-fg:    #047857;
+  --color-success-soft:  #d1fae5;
+  --color-warning-solid: #f59e0b;
+  --color-warning-fg:    #92400e;
+  --color-warning-soft:  #fef3c7;
+  --color-danger-solid:  #ef4444;
+  --color-danger-fg:     #b91c1c;
+  --color-danger-soft:   #fee2e2;
+  --color-info-solid:    #0ea5e9;
+  --color-info-fg:       #075985;
+  --color-info-soft:     #e0f2fe;
+
+  /* ─────────────────────────────────────────────────────────────────────
+   * Semantic tokens (camada de referência)
+   * ─────────────────────────────────────────────────────────────────── */
+
+  /* Surfaces & text ────────────────────────────────────────────────────── */
+  --color-bg:          #f0f7fa;
+  --color-fg:          #0a1628;
+  --color-fg-muted:    #475569;
+  --color-fg-subtle:   #9bb5c8;
+  --color-surface:     #ffffff;
+  --color-surface-alt: #f8fafb;
+  --color-border:      #dde8ef;
+
+  /* PROTAGONISTA: teal-800 (ServarX, sóbrio/corporate) ────────────────── */
+  --color-primary:        #062832; /* = brand-teal-800 — corporate, sóbrio */
+  --color-primary-hover:  #0e4d5c; /* = brand-teal-700                     */
+  --color-primary-fg:     #ffffff;
+  --color-primary-soft:   #f0f7fa;
+
+  /* ACCENT: cyan-400 (toques de luz, hover, glow) ─────────────────────── */
+  --color-accent:         #22d3ee; /* = brand-cyan-400 — destaque/glow     */
+  --color-accent-hover:   #0891b2; /* = brand-cyan-500                     */
+  --color-accent-fg:      #062832;
+
+  /* Focus ring ─────────────────────────────────────────────────────────── */
+  --color-ring: rgba(6, 40, 50, 0.40);
+
+  /* Dark surfaces (hero impactante sobre escuro) ──────────────────────── */
+  --color-dark-bg: #062832;
+  --color-dark-fg: #ffffff;
+
+  /* Aliases curtos pros 4 intents ──────────────────────────────────────── */
+  --color-success: var(--color-success-solid);
+  --color-warning: var(--color-warning-solid);
+  --color-danger:  var(--color-danger-solid);
+  --color-info:    var(--color-info-solid);
+
+  /* Gradients ──────────────────────────────────────────────────────────── */
+  --gradient-hero-glow:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(34, 211, 238, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 90%, rgba(14, 77, 92, 0.12) 0%, transparent 60%);
+  --gradient-hero-spot:
+    radial-gradient(circle, rgba(34, 211, 238, 0.20) 0%, transparent 70%);
+  --gradient-brand:
+    linear-gradient(135deg, #22d3ee 0%, #0891b2 50%, #062832 100%);
+  --gradient-brand-text:
+    linear-gradient(135deg, #22d3ee 0%, #0891b2 100%);
+
+  /* Sombras ────────────────────────────────────────────────────────────── */
+  --shadow-soft:    0 1px 3px rgba(2, 68, 132, 0.08), 0 1px 2px rgba(2, 68, 132, 0.04);
+  --shadow-medium:  0 4px 16px rgba(2, 68, 132, 0.12), 0 2px 6px rgba(2, 68, 132, 0.06);
+  --shadow-large:   0 12px 40px rgba(2, 68, 132, 0.14), 0 4px 12px rgba(2, 68, 132, 0.08);
+  --shadow-cta:     0 4px 16px rgba(6, 40, 50, 0.30);
+  --shadow-cta-accent: 0 4px 16px rgba(34, 211, 238, 0.40);
+
+  /* Containers · max-widths canônicas ─────────────────────────────────── */
+  --container-page-xs:  420px;
+  --container-page-sm:  640px;
+  --container-page-md:  760px;
+  --container-page-lg:  920px;
+  --container-page-xl: 1180px;
+
+  /* Tipografia · escalas extras ─────────────────────────────────────────── */
+  --text-eyebrow: 11px;
+  --text-hero:    56px;
+  --text-display: 72px;
+
+  /* Animações ─────────────────────────────────────────────────────────── */
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-pulse-soft: pulse-soft 2s infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@keyframes fade-up {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25); }
+  50%      { box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.10); }
+}
+
+/* Reset/base ─────────────────────────────────────────────────────────── */
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+/* Scrollbar discreta ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--color-brand-neutral-border); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-brand-neutral-light); }
+
+/* Respeita prefers-reduced-motion ───────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background: var(--color-brand-cyan-200);
+  color: var(--color-brand-teal-800);
 }
