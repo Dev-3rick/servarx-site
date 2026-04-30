@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
 import './globals.css';
 import { SITE } from '@/lib/site';
+import { OrganizationLd, LocalBusinessLd } from '@/components/seo/JsonLd';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -82,6 +83,8 @@ export default function RootLayout({
             },
           }}
         />
+        <OrganizationLd />
+        <LocalBusinessLd />
       </body>
     </html>
   );

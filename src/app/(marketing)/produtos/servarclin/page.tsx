@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Calendar, MessageSquare, FileText, Check, X, ExternalLink, Mic, Image as ImageIcon, RefreshCw, Heart, Stethoscope, Languages } from 'lucide-react';
 import { LogoIA } from '@/components/brand/LogoIA';
 import { Pricing } from '@/components/marketing/Pricing';
+import { ProductLd } from '@/components/seo/JsonLd';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -56,6 +57,13 @@ const DIFERENCIAIS = [
 export default function ServarClinPage() {
   return (
     <>
+      <ProductLd
+        name="ServarClin"
+        description="IA conversacional pra clínicas no WhatsApp. Atende, agenda e confirma consultas 24h por dia."
+        url={`${SITE.url}/produtos/servarclin`}
+        priceRange="349-947"
+      />
+
       {/* Hero */}
       <section
         className="px-6 py-20 lg:px-12 lg:py-28"
