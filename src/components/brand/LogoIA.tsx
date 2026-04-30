@@ -46,29 +46,43 @@ export function LogoIA({
   const dotColor = inverted ? '#67e8f9' : '#22d3ee';
   const baseColor = inverted ? 'text-white' : 'text-brand-teal-800';
 
+  // Divide o nome no separador "." pra colocar o ponto pulsante NO MEIO.
+  // Ex: "ServarX.IA" → prefix="ServarX", suffix="IA", ponto pulsante entre eles.
+  // Se não houver ".", o ponto vai no final (fallback).
+  const parts = name.split('.');
+  const hasSuffix = parts.length >= 2;
+  const prefix = hasSuffix ? parts[0] : name;
+  const suffix = hasSuffix ? parts.slice(1).join('.') : null;
+
+  const Dot = (
+    <span
+      aria-hidden="true"
+      className="inline-block rounded-full self-center"
+      style={{
+        width: '0.32em',
+        height: '0.32em',
+        background: dotColor,
+        boxShadow: `0 0 0.6em ${dotColor}, 0 0 0.3em ${dotColor}`,
+        animation: pulse ? 'pulse-soft 2s ease-in-out infinite' : undefined,
+        margin: '0 0.18em',
+      }}
+    />
+  );
+
   return (
     <span
       role="img"
       aria-label={name}
       className={cn(
-        'inline-flex items-baseline gap-1.5 font-bold tracking-tight select-none',
+        'inline-flex items-baseline font-bold tracking-tight select-none',
         SIZE_TEXT[size],
         baseColor,
         className,
       )}
     >
-      <span>{name}</span>
-      <span
-        aria-hidden="true"
-        className="inline-block rounded-full"
-        style={{
-          width: '0.42em',
-          height: '0.42em',
-          background: dotColor,
-          boxShadow: `0 0 0.6em ${dotColor}, 0 0 0.3em ${dotColor}`,
-          animation: pulse ? 'pulse-soft 2s ease-in-out infinite' : undefined,
-        }}
-      />
+      <span>{prefix}</span>
+      {Dot}
+      {suffix && <span>{suffix}</span>}
     </span>
   );
 }
