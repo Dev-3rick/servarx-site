@@ -4,6 +4,7 @@ import { Toaster } from 'sonner';
 import './globals.css';
 import { SITE } from '@/lib/site';
 import { OrganizationLd, LocalBusinessLd } from '@/components/seo/JsonLd';
+import { AnalyticsLoader } from '@/components/seo/AnalyticsLoader';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -85,6 +86,7 @@ export default function RootLayout({
         />
         <OrganizationLd />
         <LocalBusinessLd />
+        <AnalyticsLoader />
       </body>
     </html>
   );
