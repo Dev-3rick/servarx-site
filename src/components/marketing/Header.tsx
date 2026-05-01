@@ -39,10 +39,10 @@ export function Header() {
           ))}
           <div className="flex items-center gap-4 ml-4">
             <Link
-              href="https://app.servarx.com.br"
+              href="https://servarclin.com.br"
               className="hover:text-brand-teal-800 transition-colors"
             >
-              Entrar
+              ServarClin
             </Link>
             <Link
               href="/contato"
