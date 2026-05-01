@@ -6,9 +6,9 @@ import { FoundersBanner } from '@/components/marketing/FoundersBanner';
 import { CTABanner } from '@/components/marketing/CTABanner';
 
 export const metadata: Metadata = {
-  title: 'ServarX — IA conversacional pro Centro Médico do Interior',
+  title: 'ServarX — IA para Agendamento de Clínicas no Interior de Minas Gerais',
   description:
-    'Agende todos os seus médicos e atenda pacientes 24h por dia, sem pagar licenças extras por profissional. 30 dias de garantia.',
+    'Automatize o agendamento do seu centro médico via WhatsApp. A IA da ServarX atende 24h, confirma consultas, reduz faltas e nunca perde uma marcação. 30 dias de garantia.',
 };
 
 import { TrustBar } from '@/components/marketing/TrustBar';
@@ -24,10 +24,10 @@ export default function HomePage() {
       <HowItWorks />
       <FoundersBanner />
       <CTABanner
-        eyebrow="É hora"
-        title="Pronto pra parar de perder paciente no WhatsApp?"
-        subtitle="30 dias de garantia. Sem fidelidade. A gente fala em até 24h."
-        ctaLabel="Falar com a gente"
+        eyebrow="Próximo passo"
+        title="Sua clínica merece uma secretária que trabalha 24h."
+        subtitle="Implantação rápida, sem contrato de fidelidade e com garantia incondicional de 30 dias — se não funcionar, dinheiro de volta."
+        ctaLabel="Quero minha demonstração grátis"
         ctaHref="/contato"
         secondaryLabel="Ver planos"
         secondaryHref="/produtos/servarclin"
