@@ -15,30 +15,33 @@ export const metadata: Metadata = {
 export default function ContatoPage() {
   return (
     <>
-      {/* Hero — claro */}
-      <section
-        className="px-6 py-20 lg:px-12 lg:py-24"
-        style={{ background: 'var(--gradient-hero-glow)' }}
-      >
-        <div className="max-w-page-md mx-auto text-center">
+      {/* Hero — DARK (padrão escuro do site) */}
+      <section className="relative overflow-hidden bg-brand-teal-800 text-white">
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{ background: 'var(--gradient-hero-spot)' }}
+          aria-hidden="true"
+        />
+        <div className="relative max-w-page-md mx-auto px-6 lg:px-12 py-20 lg:py-28 text-center">
           <Reveal immediate variant="up" delay={0} duration={1.0}>
             <p
-              className="mb-6 font-mono uppercase tracking-[0.18em] text-brand-cyan-600"
+              className="mb-6 font-mono uppercase tracking-[0.18em] text-brand-cyan-400"
               style={{ fontSize: 'var(--text-eyebrow)' }}
             >
               DEMONSTRAÇÃO GRATUITA
             </p>
           </Reveal>
+
           <Reveal immediate variant="up" delay={200} duration={1.1}>
             <h1
-              className="font-bold tracking-tight text-brand-teal-800 leading-[1.1] mb-6"
+              className="font-bold tracking-tight text-white leading-[1.1] mb-6"
               style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}
             >
               A IA cuida dos seus pacientes.
               <br />
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #0891b2 0%, #0f766e 100%)',
+                  background: 'linear-gradient(135deg, #67e8f9 0%, #22d3ee 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
@@ -48,8 +51,9 @@ export default function ContatoPage() {
               </span>
             </h1>
           </Reveal>
+
           <Reveal immediate variant="up" delay={420} duration={1.1}>
-            <p className="text-lg text-brand-neutral-muted leading-relaxed max-w-xl mx-auto">
+            <p className="text-lg text-white/75 leading-relaxed max-w-xl mx-auto">
               Preencha abaixo e o Erick — fundador da ServarX — entra em contato
               pessoalmente para entender o fluxo da sua clínica e montar a demonstração
               certa para você.
@@ -58,19 +62,19 @@ export default function ContatoPage() {
 
           {/* Contextual banner — resolve the "human vs AI" paradox */}
           <Reveal immediate variant="up" delay={600} duration={1.0}>
-            <div className="mt-8 inline-flex flex-col sm:flex-row items-center gap-4 px-6 py-4 rounded-2xl bg-white border border-brand-neutral-border shadow-soft text-sm">
-              <div className="flex items-center gap-2 text-brand-neutral-muted">
-                <Bot className="w-5 h-5 text-brand-cyan-500" />
+            <div className="mt-8 inline-flex flex-col sm:flex-row items-center gap-4 px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-sm">
+              <div className="flex items-center gap-2 text-white/80">
+                <Bot className="w-5 h-5 text-brand-cyan-400" />
                 <span>
-                  <strong className="text-brand-teal-800">ServarX.IA</strong>{' '}
+                  <strong className="text-white">ServarX.IA</strong>{' '}
                   → cuida dos seus pacientes 24h
                 </span>
               </div>
-              <div className="hidden sm:block h-4 w-px bg-brand-neutral-border" />
-              <div className="flex items-center gap-2 text-brand-neutral-muted">
-                <User className="w-5 h-5 text-brand-teal-600" />
+              <div className="hidden sm:block h-4 w-px bg-white/20" />
+              <div className="flex items-center gap-2 text-white/80">
+                <User className="w-5 h-5 text-brand-cyan-300" />
                 <span>
-                  <strong className="text-brand-teal-800">Erick (fundador)</strong>{' '}
+                  <strong className="text-white">Erick (fundador)</strong>{' '}
                   → cuida de você
                 </span>
               </div>
