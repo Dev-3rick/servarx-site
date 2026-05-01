@@ -93,9 +93,10 @@ export default function QuemSomosPage() {
           <div className="space-y-5 text-brand-neutral-muted leading-relaxed text-base lg:text-lg">
             <Reveal variant="up" delay={100}>
               <p>
-                Eu sou o Erick. Curso engenharia da computação no interior de Minas
-                Gerais, em Barão de Cocais, e construí a primeira versão do
-                ServarClin (a Sofia) durante 2024-2025.
+                Eu sou o Erick Henrique Caetano de Almeida. Curso engenharia da
+                computação no interior de Minas Gerais, em Barão de Cocais, e
+                construí a primeira versão do ServarClin (a Sofia) durante
+                2024-2025.
               </p>
             </Reveal>
             <Reveal variant="up" delay={150}>
@@ -135,7 +136,7 @@ export default function QuemSomosPage() {
               <div className="mt-12 relative max-w-[300px]">
                  <img 
                    src="/images/A_highly_realistic,_professional_portrait_202605011046.jpeg" 
-                   alt="Erick Henrique - Fundador da ServarX" 
+                   alt="Erick Henrique Caetano de Almeida - Fundador da ServarX" 
                    className="rounded-2xl shadow-xl grayscale hover:grayscale-0 transition-all duration-500"
                  />
                  <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-brand-cyan-400/10 rounded-full blur-2xl -z-10" />
@@ -146,7 +147,7 @@ export default function QuemSomosPage() {
           <Reveal variant="fade" delay={400}>
             <div className="mt-8 pt-8 border-t border-border">
               <p className="font-mono text-sm text-brand-neutral-muted">
-                Erick Henrique, fundador da ServarX
+                Erick Henrique Caetano de Almeida, fundador da ServarX
                 <br />
                 <span className="text-brand-neutral-light text-xs">{SITE.endereco.full}</span>
               </p>

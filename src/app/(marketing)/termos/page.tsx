@@ -40,7 +40,7 @@ export default function TermosPage() {
           <Section title="1. Quem é a ServarX">
             <p>Empresa brasileira que desenvolve software de IA pra automatizar atendimento em negócios de serviço.</p>
             <ul className="space-y-1.5 mt-3 ml-4 list-disc">
-              <li><strong>Responsável:</strong> {SITE.empresa.razaoSocial}, {SITE.empresa.cpfOuCnpj}</li>
+              <li><strong>Responsável:</strong> {SITE.empresa.razaoSocial}, CNPJ {SITE.empresa.cpfOuCnpj}</li>
               <li><strong>Sede:</strong> {SITE.endereco.full}</li>
             </ul>
           </Section>

@@ -9,7 +9,7 @@ import { SITE } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Falar com a ServarX — Agende sua demonstração',
   description:
-    'Quer ver a ServarX.IA em ação na sua clínica? Fala com o fundador. A demonstração é gratuita, sem compromisso e feita sob medida para o seu tipo de atendimento.',
+    'A IA cuida dos seus pacientes. O Erick Henrique cuida da sua clínica. Fala com o fundador e veja a demonstração ao vivo.',
 };
 
 export default function ContatoPage() {
@@ -54,7 +54,7 @@ export default function ContatoPage() {
 
           <Reveal immediate variant="up" delay={420} duration={1.1}>
             <p className="text-lg text-white/75 leading-relaxed max-w-xl mx-auto">
-              Preencha abaixo e o Erick — fundador da ServarX — entra em contato
+              Preencha abaixo e o Erick Henrique — fundador da ServarX — entra em contato
               pessoalmente para entender o fluxo da sua clínica e montar a demonstração
               certa para você.
             </p>
@@ -74,7 +74,7 @@ export default function ContatoPage() {
               <div className="flex items-center gap-2 text-white/80">
                 <User className="w-5 h-5 text-brand-cyan-300" />
                 <span>
-                  <strong className="text-white">Erick (fundador)</strong>{' '}
+                  <strong className="text-white">Erick Henrique (fundador)</strong>{' '}
                   → cuida de você
                 </span>
               </div>
@@ -112,7 +112,7 @@ export default function ContatoPage() {
                 </h3>
                 <ol className="space-y-3 text-sm text-brand-neutral-muted">
                   {[
-                    'Erick analisa o perfil da sua clínica',
+                    'Erick Henrique analisa o perfil da sua clínica',
                     'Entra em contato em até 24h pelo WhatsApp',
                     'Agenda uma demo ao vivo da IA no seu fluxo real',
                     'Sem script genérico — a demo é feita sob medida',
@@ -183,7 +183,7 @@ export default function ContatoPage() {
                   <div>
                     <p className="font-mono uppercase tracking-wider text-xs text-brand-neutral-light mb-1">SLA</p>
                     <p className="text-brand-neutral-muted">
-                      Em até 24h — geralmente no mesmo dia. O Erick analisa cada solicitação pessoalmente antes de entrar em contato.
+                      Em até 24h — geralmente no mesmo dia. Erick Henrique analisa cada solicitação pessoalmente antes de entrar em contato.
                     </p>
                   </div>
                 </div>
@@ -214,7 +214,7 @@ export default function ContatoPage() {
               Prefere começar pelo WhatsApp?
             </h2>
             <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-md mx-auto">
-              Manda uma mensagem direta para o Erick. Ele analisa o perfil da sua clínica e te chama para a demonstração.
+              Manda uma mensagem direta para Erick Henrique. Ele analisa o perfil da sua clínica e te chama para a demonstração.
             </p>
             <Link
               href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(SITE.whatsappText)}`}

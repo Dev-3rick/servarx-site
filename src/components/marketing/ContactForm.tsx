@@ -63,7 +63,7 @@ export function ContactForm() {
     await new Promise((r) => setTimeout(r, 800));
 
     toast.success('Solicitação recebida!', {
-      description: 'O Erick analisa o perfil da sua clínica e entra em contato em até 24h pelo WhatsApp.',
+      description: 'Erick Henrique analisa o perfil da sua clínica e entra em contato em até 24h pelo WhatsApp.',
       duration: 6000,
     });
     setSubmitting(false);

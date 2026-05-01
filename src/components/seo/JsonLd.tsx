@@ -13,7 +13,7 @@ const ORGANIZATION = {
   description: SITE.description,
   founder: {
     '@type': 'Person',
-    name: 'Erick Henrique',
+    name: 'Erick Henrique Caetano de Almeida',
   },
   foundingDate: '2026',
   foundingLocation: {

@@ -11,13 +11,13 @@ export const SITE = {
   url: 'https://servarx.com.br',
 
   // Contato
-  whatsapp: '+5531000000000', // TODO substituir pelo número dedicado da ServarX
+  whatsapp: '+5531996950720',
   whatsappText:
     'Olá! Vim do site da ServarX e quero saber mais sobre o ServarClin.',
   email: {
-    contato: 'contato@servarx.com.br',
-    suporte: 'suporte@servarx.com.br',
-    lgpd: 'lgpd@servarx.com.br',
+    contato: 'Servaxhome@gmail.com',
+    suporte: 'Servaxhome@gmail.com',
+    lgpd: 'Servaxhome@gmail.com',
   },
 
   // Endereço
@@ -30,8 +30,8 @@ export const SITE = {
 
   // Empresa (atualizar quando MEI sair)
   empresa: {
-    razaoSocial: 'Erick Henrique [SOBRENOME]', // placeholder até MEI
-    cpfOuCnpj: 'CPF [XXX.XXX.XXX-XX]', // placeholder
+    razaoSocial: 'Erick Henrique Caetano de Almeida',
+    cpfOuCnpj: '66.532.887/000-77',
     nomeFantasia: 'ServarX',
   },
 
@@ -103,7 +103,7 @@ export const PRICING = {
         'Cifragem LGPD nível bancário',
       ],
       destaque: false,
-      checkoutUrl: 'https://www.asaas.com/c/placeholder-basico',
+      checkoutUrl: 'https://www.asaas.com/c/checkout-servarclin',
     },
     {
       slug: 'intermediario',
@@ -121,7 +121,7 @@ export const PRICING = {
         'Suporte prioritário',
       ],
       destaque: true,
-      checkoutUrl: 'https://www.asaas.com/c/placeholder-intermediario',
+      checkoutUrl: 'https://www.asaas.com/c/checkout-servarclin',
     },
     {
       slug: 'personalizado',
@@ -140,7 +140,7 @@ export const PRICING = {
         'Relatórios de BI e Conversão Avançados',
       ],
       destaque: false,
-      checkoutUrl: 'https://www.asaas.com/c/placeholder-max',
+      checkoutUrl: 'https://www.asaas.com/c/checkout-servarclin',
     },
   ],
   addons: [

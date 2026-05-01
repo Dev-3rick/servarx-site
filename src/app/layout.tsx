@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     'IA para centro médico',
     'reduzir no-show clínica',
   ],
-  authors: [{ name: 'Erick Henrique', url: SITE.url }],
-  creator: 'Erick Henrique',
+  authors: [{ name: 'Erick Henrique Caetano de Almeida', url: SITE.url }],
+  creator: 'Erick Henrique Caetano de Almeida',
   publisher: SITE.name,
   formatDetection: {
     email: false,

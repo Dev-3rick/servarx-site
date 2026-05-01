@@ -38,9 +38,9 @@ export default function PrivacidadePage() {
           <Section title="1. Quem somos">
             <p>A <strong>ServarX</strong> é uma empresa brasileira que constrói produtos de IA pra ajudar negócios de serviço a atenderem melhor quem precisa deles. Nosso primeiro produto é o <strong>ServarClin</strong>, voltado para clínicas médicas.</p>
             <ul className="space-y-1.5 mt-4">
-              <li>• <strong>Responsável:</strong> {SITE.empresa.razaoSocial}, {SITE.empresa.cpfOuCnpj} <em className="text-brand-neutral-light text-sm">(será atualizado para CNPJ após abertura do MEI)</em></li>
+              <li>• <strong>Responsável:</strong> {SITE.empresa.razaoSocial}, CNPJ {SITE.empresa.cpfOuCnpj}</li>
               <li>• <strong>Endereço:</strong> {SITE.endereco.full}</li>
-              <li>• <strong>Encarregado pelo Tratamento de Dados (DPO):</strong> Erick Henrique — <a href={`mailto:${SITE.email.lgpd}`} className="text-brand-teal-800 hover:underline">{SITE.email.lgpd}</a></li>
+              <li>• <strong>Encarregado pelo Tratamento de Dados (DPO):</strong> Erick Henrique Caetano de Almeida — <a href={`mailto:${SITE.email.lgpd}`} className="text-brand-teal-800 hover:underline">{SITE.email.lgpd}</a></li>
             </ul>
           </Section>
 
@@ -171,7 +171,7 @@ export default function PrivacidadePage() {
           <Section title="12. Contato">
             <ul className="space-y-1 ml-4 list-disc">
               <li><strong>Email LGPD:</strong> <a href={`mailto:${SITE.email.lgpd}`} className="text-brand-teal-800 hover:underline">{SITE.email.lgpd}</a></li>
-              <li><strong>DPO:</strong> Erick Henrique</li>
+              <li><strong>DPO:</strong> Erick Henrique Caetano de Almeida</li>
               <li><strong>Endereço:</strong> {SITE.endereco.full}</li>
             </ul>
           </Section>
