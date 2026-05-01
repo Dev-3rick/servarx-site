@@ -11,11 +11,16 @@ export const metadata: Metadata = {
     'Agende todos os seus médicos e atenda pacientes 24h por dia, sem pagar licenças extras por profissional. 30 dias de garantia.',
 };
 
+import { TrustBar } from '@/components/marketing/TrustBar';
+import { Specialties } from '@/components/marketing/Specialties';
+
 export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustBar />
       <AntiClaim />
+      <Specialties />
       <HowItWorks />
       <FoundersBanner />
       <CTABanner

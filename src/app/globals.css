@@ -114,7 +114,7 @@
   --container-page-sm:  640px;
   --container-page-md:  760px;
   --container-page-lg:  920px;
-  --container-page-xl: 1180px;
+  --container-page-xl: 1280px;
 
   /* Tipografia · escalas extras ─────────────────────────────────────────── */
   --text-eyebrow: 11px;
@@ -140,6 +140,13 @@
 @keyframes pulse-soft {
   0%, 100% { box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25); }
   50%      { box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.10); }
+}
+
+@layer utilities {
+  .bg-noise {
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+    /* Alternativamente, um ruído procedural mais sutil */
+  }
 }
 
 /* Reset/base ─────────────────────────────────────────────────────────── */

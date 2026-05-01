@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-surface/80 backdrop-blur-md">
-      <div className="max-w-page-xl mx-auto flex items-center justify-between px-6 py-4 lg:px-12 lg:py-5">
+      <div className="max-w-page-xl mx-auto flex items-center justify-between px-6 py-4 lg:px-8 lg:py-5">
         <Link href="/" aria-label="ServarX — Home" className="focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[color:var(--color-ring)] rounded-md">
           <Logo variant="full" size="md" />
         </Link>
@@ -37,12 +37,20 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/contato"
-            className="rounded-full bg-brand-teal-800 px-5 py-2.5 font-semibold text-white shadow-cta hover:bg-brand-teal-700 hover:shadow-cta-accent transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[color:var(--color-ring)]"
-          >
-            Falar com a gente
-          </Link>
+          <div className="flex items-center gap-4 ml-4">
+            <Link
+              href="https://app.servarx.com.br"
+              className="hover:text-brand-teal-800 transition-colors"
+            >
+              Entrar
+            </Link>
+            <Link
+              href="/contato"
+              className="rounded-full bg-brand-teal-800 px-6 py-2.5 font-semibold text-white shadow-cta hover:bg-brand-teal-700 hover:shadow-cta-accent transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[color:var(--color-ring)]"
+            >
+              Agendar demonstração
+            </Link>
+          </div>
         </nav>
 
         {/* Mobile hamburguer */}

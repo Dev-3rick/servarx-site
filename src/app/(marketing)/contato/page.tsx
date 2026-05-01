@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import Link from 'next/link';
+import { Phone, Mail, MapPin, Clock, MessageCircle } from 'lucide-react';
 import { ContactForm } from '@/components/marketing/ContactForm';
+import { Reveal } from '@/components/motion/Reveal';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -13,50 +15,58 @@ export const metadata: Metadata = {
 export default function ContatoPage() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero — claro */}
       <section
         className="px-6 py-20 lg:px-12 lg:py-24"
         style={{ background: 'var(--gradient-hero-glow)' }}
       >
         <div className="max-w-page-md mx-auto text-center">
-          <p
-            className="mb-6 font-mono uppercase tracking-[0.18em] text-brand-cyan-600"
-            style={{ fontSize: 'var(--text-eyebrow)' }}
-          >
-            FALAR COM A GENTE
-          </p>
-          <h1
-            className="font-bold tracking-tight text-brand-teal-800 leading-[1.1] mb-6"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}
-          >
-            Sem robô. Sou eu mesmo que respondo.
-          </h1>
-          <p className="text-lg text-brand-neutral-muted leading-relaxed">
-            Resposta em até 24h. Geralmente no mesmo dia. Se mandar agora à noite,
-            te chamo amanhã cedo.
-          </p>
+          <Reveal immediate variant="up" delay={0} duration={1.0}>
+            <p
+              className="mb-6 font-mono uppercase tracking-[0.18em] text-brand-cyan-600"
+              style={{ fontSize: 'var(--text-eyebrow)' }}
+            >
+              FALAR COM A GENTE
+            </p>
+          </Reveal>
+          <Reveal immediate variant="up" delay={200} duration={1.1}>
+            <h1
+              className="font-bold tracking-tight text-brand-teal-800 leading-[1.1] mb-6"
+              style={{ fontSize: 'clamp(2rem, 5vw, 3rem)' }}
+            >
+              Sem robô. Sou eu mesmo que respondo.
+            </h1>
+          </Reveal>
+          <Reveal immediate variant="up" delay={420} duration={1.1}>
+            <p className="text-lg text-brand-neutral-muted leading-relaxed">
+              Resposta em até 24h. Geralmente no mesmo dia. Se mandar agora à noite,
+              te chamo amanhã cedo.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      {/* Form + info */}
+      {/* Form + sidebar — claro */}
       <section className="px-6 py-16 lg:px-12 lg:py-24">
         <div className="max-w-page-lg mx-auto">
           <div className="grid gap-12 lg:grid-cols-[3fr_2fr] lg:gap-16">
             {/* Form */}
-            <div className="rounded-3xl border border-border bg-surface p-8 lg:p-10 shadow-soft">
-              <h2 className="text-2xl font-bold text-brand-teal-800 mb-2">
-                Manda a mensagem
-              </h2>
-              <p className="text-brand-neutral-muted mb-8">
-                Preencha o que quiser — quanto mais detalhe sobre sua clínica, mais útil é a primeira conversa.
-              </p>
-              <Suspense fallback={<div className="h-96 animate-pulse bg-brand-neutral-bg rounded-xl" />}>
-                <ContactForm />
-              </Suspense>
-            </div>
+            <Reveal variant="up">
+              <div className="rounded-3xl border border-border bg-surface p-8 lg:p-10 shadow-soft">
+                <h2 className="text-2xl font-bold text-brand-teal-800 mb-2">
+                  Manda a mensagem
+                </h2>
+                <p className="text-brand-neutral-muted mb-8">
+                  Preencha o que quiser — quanto mais detalhe sobre sua clínica, mais útil é a primeira conversa.
+                </p>
+                <Suspense fallback={<div className="h-96 animate-pulse bg-brand-neutral-bg rounded-xl" />}>
+                  <ContactForm />
+                </Suspense>
+              </div>
+            </Reveal>
 
             {/* Info lateral */}
-            <aside className="space-y-8">
+            <Reveal variant="up" delay={150} as="aside" className="space-y-8">
               <div>
                 <h3 className="text-lg font-bold text-brand-teal-800 mb-4">
                   Prefere falar direto?
@@ -127,8 +137,35 @@ export default function ContatoPage() {
                   </a>
                 </p>
               </div>
-            </aside>
+            </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* Atalho WhatsApp — DARK */}
+      <section className="relative overflow-hidden bg-brand-teal-800 text-white">
+        <div className="absolute inset-0 opacity-40" style={{ background: 'var(--gradient-hero-spot)' }} aria-hidden="true" />
+        <div className="relative max-w-page-md mx-auto px-6 lg:px-12 py-20 lg:py-24 text-center">
+          <Reveal variant="up">
+            <p className="font-mono uppercase tracking-[0.18em] text-brand-cyan-400 text-xs mb-4">
+              ATALHO
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+              Não quer preencher form?
+            </h2>
+            <p className="text-lg text-white/80 leading-relaxed mb-8">
+              Chama direto no WhatsApp. Não tem robô do outro lado — sou eu, de Barão de Cocais.
+            </p>
+            <Link
+              href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(SITE.whatsappText)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-full bg-[#25D366] px-8 py-4 font-semibold text-white shadow-cta-accent hover:bg-[#1da851] hover:scale-105 transition-all"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Abrir conversa no WhatsApp
+            </Link>
+          </Reveal>
         </div>
       </section>
     </>
