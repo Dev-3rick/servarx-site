@@ -130,19 +130,18 @@ export const PRICING = {
       mensagensLimite: 999999, // Ilimitado
       features: [
         'Tudo do Intermediário',
-        'Agente de Voz IA (Confirmação via ligação)',
         'Gestão de Lista de Espera Automática',
-        'Integração com ERPs Médicos (Tasy, MV, etc)',
         'Painel Multiclínicas (Unidades ilimitadas)',
         'Análise de Sentimento e Alerta de Crise',
         'Coleta de Reviews (Google Meu Negócio)',
+        'Suporte VIP via WhatsApp (canal direto)',
+        'Relatórios de BI e Conversão Avançados',
       ],
       destaque: false,
     },
   ],
   addons: [
     { nome: 'Cadeira Extra', preco: 80, descricao: 'por médico extra além do limite do tier' },
-    { nome: 'Minutos de Voz', preco: 0.50, descricao: 'por minuto de ligação da IA de voz' },
   ],
 } as const;
 
