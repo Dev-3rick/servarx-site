@@ -49,8 +49,8 @@ export default function HomePage() {
         subtitle="Implantação rápida, sem contrato de fidelidade e com garantia incondicional de 30 dias — se não funcionar, dinheiro de volta."
         ctaLabel="Quero minha demonstração grátis"
         ctaHref="/contato"
-        secondaryLabel="Ver planos"
-        secondaryHref="/produtos/servarclin"
+        secondaryLabel="Ver todos os planos"
+        secondaryHref="/compras"
       />
     </>
   );

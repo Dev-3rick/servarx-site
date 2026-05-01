@@ -30,7 +30,7 @@ const FOOTER_LINKS = [
     links: [
       { label: 'Quem somos', href: '/quem-somos' },
       { label: 'Produtos', href: '/produtos' },
-      { label: 'Blog', href: '/blog' },
+      { label: 'Planos e Preços', href: '/compras' },
       { label: 'Contato', href: '/contato' },
     ],
   },
@@ -38,6 +38,7 @@ const FOOTER_LINKS = [
     titulo: 'Produtos',
     links: [
       { label: 'ServarClin', href: '/produtos/servarclin' },
+      { label: 'Blog da IA', href: '/blog' },
       { label: 'Entrar no app', href: SITE.produto.appUrl },
     ],
   },
