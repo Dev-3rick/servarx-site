@@ -62,24 +62,27 @@ export function Pricing() {
               </header>
 
               <div className="mb-6 pb-6 border-b border-border">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold text-brand-teal-800">
-                    {formatBRL(tier.preco)}
-                  </span>
-                  <span className="text-sm text-brand-neutral-muted">/mês</span>
+                <div className="flex flex-col gap-0.5">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-bold text-brand-teal-800">
+                      {formatBRL(tier.preco * 0.9)}
+                    </span>
+                    <span className="text-sm text-brand-neutral-muted">/mês</span>
+                  </div>
+                  <p className="text-[10px] font-bold text-brand-cyan-600 uppercase tracking-widest">Plano Anual (10% OFF)</p>
                 </div>
-                <div className="mt-3 flex gap-4 border-t border-border/50 pt-3">
+                <div className="mt-3 flex flex-col gap-2 border-t border-border/50 pt-3">
                   <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-brand-neutral-muted">
-                    <CreditCard className="w-3 h-3" /> Cartão
+                    <CreditCard className="w-3 h-3 text-brand-cyan-500" /> Cartão: Anual + Isenção de Instalação
                   </div>
                   <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-brand-neutral-muted">
-                    <Receipt className="w-3 h-3" /> Boleto
+                    <Receipt className="w-3 h-3" /> Boleto: Recorrente (E-mail/Wpp)
                   </div>
                 </div>
-                <p className="mt-3 text-xs text-brand-neutral-light italic">
-                  * Contrato anual para cartão de crédito
+                <p className="mt-3 text-[10px] text-brand-neutral-light italic leading-tight">
+                  * Isenção de R$ {PRICING.setup} na instalação exclusiva para contrato anual no cartão.
                 </p>
-                <p className="mt-1 text-xs font-mono uppercase tracking-wider text-brand-neutral-light">
+                <p className="mt-2 text-xs font-mono uppercase tracking-wider text-brand-neutral-light">
                   Até {tier.medicosLimite} médicos · Ilimitado
                 </p>
               </div>

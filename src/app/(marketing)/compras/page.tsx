@@ -125,18 +125,21 @@ export default function ComprasPage() {
                   <h3 className="text-xl font-bold text-brand-teal-800 mb-1">{tier.nome}</h3>
                   <p className="text-sm text-brand-neutral-muted">{tier.publico}</p>
                 </div>
-                <div className="mb-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-bold text-brand-teal-800">{formatBRL(tier.preco)}</span>
-                  <span className="text-sm text-brand-neutral-muted">/mês</span>
+                <div className="mb-4 flex flex-col gap-1">
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-4xl font-bold text-brand-teal-800">{formatBRL(tier.preco * 0.9)}</span>
+                    <span className="text-sm text-brand-neutral-muted">/mês</span>
+                  </div>
+                  <p className="text-[10px] font-bold text-brand-cyan-600 uppercase tracking-wider">No Plano Anual (10% OFF)</p>
                 </div>
                 <div className="mb-6 flex flex-col gap-2">
                   <div className="flex items-center gap-2 text-xs text-brand-neutral-muted">
-                    <CreditCard className="w-3.5 h-3.5" />
-                    <span>Cartão (Contrato Anual)</span>
+                    <CreditCard className="w-3.5 h-3.5 text-brand-cyan-500" />
+                    <span>Cartão: <strong>Anual com Isenção de Instalação</strong></span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-brand-neutral-muted">
                     <Receipt className="w-3.5 h-3.5" />
-                    <span>Boleto Recorrente</span>
+                    <span>Boleto: Recorrente via E-mail/WhatsApp</span>
                   </div>
                 </div>
                 <ul className="space-y-4 mb-10 flex-1">
@@ -183,8 +186,10 @@ export default function ComprasPage() {
                 <HelpCircle className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold text-brand-teal-800">Taxa de Implantação: {formatBRL(PRICING.setup)}</h4>
-                <p className="text-sm text-brand-neutral-muted">{PRICING.setupNarrativa}.</p>
+                <h4 className="font-bold text-brand-teal-800">Taxa de Instalação: {formatBRL(PRICING.setup)}</h4>
+                <p className="text-sm text-brand-neutral-muted">
+                  Grátis no Contrato Anual. Cobrada apenas no primeiro mês para planos via Boleto.
+                </p>
               </div>
             </div>
           </Reveal>

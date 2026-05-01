@@ -316,11 +316,17 @@ export default function ServarClinMarketingPage() {
                   )}
                   <h3 className="text-lg font-bold text-brand-teal-800 mb-1">{p.nome}</h3>
                   <p className="text-xs text-brand-neutral-muted mb-5">{p.publico}</p>
-                  <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-brand-neutral-border">
-                    <span className="text-4xl font-bold text-brand-teal-800">
-                      R$ {p.preco}
-                    </span>
-                    <span className="text-sm text-brand-neutral-muted">/mês</span>
+                  <div className="flex flex-col gap-1 mb-6 pb-6 border-b border-brand-neutral-border">
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-4xl font-bold text-brand-teal-800">
+                        R$ {Math.round(p.preco * 0.9)}
+                      </span>
+                      <span className="text-sm text-brand-neutral-muted">/mês</span>
+                    </div>
+                    <p className="text-[10px] font-bold text-brand-cyan-600 uppercase tracking-widest">No Plano Anual (10% OFF)</p>
+                    <p className="text-[10px] text-brand-neutral-muted mt-2 font-medium">
+                      * Isenção de instalação no cartão
+                    </p>
                   </div>
                   <ul className="space-y-3 mb-8 flex-1">
                     {p.features.map((f) => (
