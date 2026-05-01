@@ -55,10 +55,10 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-surface mt-24">
-      <div className="max-w-page-xl mx-auto px-6 py-16 lg:px-12">
+    <footer className="border-t border-border bg-surface mt-12">
+      <div className="max-w-page-xl mx-auto px-4 py-8 lg:px-8">
         {/* Top: brand + links em grid */}
-        <div className="grid gap-12 lg:grid-cols-[2fr_3fr] mb-12">
+        <div className="grid gap-8 lg:grid-cols-[2fr_3fr] mb-8">
           {/* Brand column */}
           <div>
             <Link href="/" aria-label="ServarX — Home" className="inline-block mb-6">
@@ -121,7 +121,7 @@ export function Footer() {
         </div>
 
         {/* Indicação banner */}
-        <div className="mb-12 rounded-2xl border border-border bg-brand-neutral-bg px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+        <div className="mb-8 rounded-2xl border border-border bg-brand-neutral-bg px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
           <p className="text-sm text-brand-neutral-muted">
             <strong className="text-brand-teal-800">Conhece um centro médico que precisa?</strong> Indique e ganhe um mês.
           </p>
@@ -134,7 +134,7 @@ export function Footer() {
         </div>
 
         {/* Bottom: legal info */}
-        <div className="border-t border-border pt-8 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between text-xs text-brand-neutral-muted">
+        <div className="border-t border-border pt-6 flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between text-xs text-brand-neutral-muted">
           <div className="flex items-center gap-2">
             <MapPin className="w-3.5 h-3.5" />
             <span>{SITE.endereco.full}</span>
