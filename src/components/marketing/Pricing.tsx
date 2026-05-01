@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { Check, Sparkles, ShieldCheck } from 'lucide-react';
+import { Check, Sparkles, ShieldCheck, CreditCard, Receipt } from 'lucide-react';
 import { Reveal } from '@/components/motion/Reveal';
 import { PRICING } from '@/lib/site';
 import { cn } from '@/lib/cn';
@@ -69,8 +68,19 @@ export function Pricing() {
                   </span>
                   <span className="text-sm text-brand-neutral-muted">/mês</span>
                 </div>
-                <p className="mt-2 text-xs font-mono uppercase tracking-wider text-brand-neutral-light">
-                  Até {tier.medicosLimite} médicos · {tier.mensagensLimite.toLocaleString('pt-BR')} mensagens IA / mês
+                <div className="mt-3 flex gap-4 border-t border-border/50 pt-3">
+                  <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-brand-neutral-muted">
+                    <CreditCard className="w-3 h-3" /> Cartão
+                  </div>
+                  <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-brand-neutral-muted">
+                    <Receipt className="w-3 h-3" /> Boleto
+                  </div>
+                </div>
+                <p className="mt-3 text-xs text-brand-neutral-light italic">
+                  * Contrato anual para cartão de crédito
+                </p>
+                <p className="mt-1 text-xs font-mono uppercase tracking-wider text-brand-neutral-light">
+                  Até {tier.medicosLimite} médicos · Ilimitado
                 </p>
               </div>
 

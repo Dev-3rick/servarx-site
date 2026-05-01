@@ -11,6 +11,8 @@ import {
   Monitor,
   UserCheck,
   Rocket,
+  CreditCard,
+  Receipt,
 } from 'lucide-react';
 import { Reveal } from '@/components/motion/Reveal';
 import { SITE, PRICING } from '@/lib/site';
@@ -123,9 +125,19 @@ export default function ComprasPage() {
                   <h3 className="text-xl font-bold text-brand-teal-800 mb-1">{tier.nome}</h3>
                   <p className="text-sm text-brand-neutral-muted">{tier.publico}</p>
                 </div>
-                <div className="mb-8 flex items-baseline gap-1">
+                <div className="mb-4 flex items-baseline gap-1">
                   <span className="text-4xl font-bold text-brand-teal-800">{formatBRL(tier.preco)}</span>
                   <span className="text-sm text-brand-neutral-muted">/mês</span>
+                </div>
+                <div className="mb-6 flex flex-col gap-2">
+                  <div className="flex items-center gap-2 text-xs text-brand-neutral-muted">
+                    <CreditCard className="w-3.5 h-3.5" />
+                    <span>Cartão (Contrato Anual)</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-brand-neutral-muted">
+                    <Receipt className="w-3.5 h-3.5" />
+                    <span>Boleto Recorrente</span>
+                  </div>
                 </div>
                 <ul className="space-y-4 mb-10 flex-1">
                   {tier.features.map((f) => (
