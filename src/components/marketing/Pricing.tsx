@@ -73,14 +73,14 @@ export function Pricing() {
                 </div>
                 <div className="mt-3 flex flex-col gap-2 border-t border-border/50 pt-3">
                   <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-brand-neutral-muted">
-                    <CreditCard className="w-3 h-3 text-brand-cyan-500" /> Cartão: Anual + Isenção de Instalação
+                    <CreditCard className="w-3 h-3 text-brand-cyan-500" /> Cartão: Compromisso Anual
                   </div>
                   <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider font-bold text-brand-neutral-muted">
-                    <Receipt className="w-3 h-3" /> Boleto: Recorrente (E-mail/Wpp)
+                    <Receipt className="w-3 h-3" /> Boleto: Sem Fidelidade
                   </div>
                 </div>
                 <p className="mt-3 text-[10px] text-brand-neutral-light italic leading-tight">
-                  * Isenção de R$ {PRICING.setup} na instalação exclusiva para contrato anual no cartão.
+                  * No plano anual (cartão) não há cancelamento antecipado. Planos via boleto podem ser cancelados a qualquer momento.
                 </p>
                 <p className="mt-2 text-xs font-mono uppercase tracking-wider text-brand-neutral-light">
                   Até {tier.medicosLimite} médicos · Ilimitado

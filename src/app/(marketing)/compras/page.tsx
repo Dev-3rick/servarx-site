@@ -48,7 +48,7 @@ const FAQ = [
   },
   {
     q: 'Tem fidelidade? Posso cancelar quando quiser?',
-    a: 'Não há fidelidade nos planos mensais. Você pode cancelar com um clique no painel ou falando conosco. Simples e justo.',
+    a: 'Depende do seu plano. No plano via Boleto (Mensal), não há fidelidade e você pode cancelar quando quiser. Já no plano via Cartão (Anual), você assume um compromisso de 12 meses para garantir o desconto de 10% e a isenção da taxa de instalação — similar aos planos anuais do Google One.',
   },
 ];
 
@@ -135,11 +135,11 @@ export default function ComprasPage() {
                 <div className="mb-6 flex flex-col gap-2">
                   <div className="flex items-center gap-2 text-xs text-brand-neutral-muted">
                     <CreditCard className="w-3.5 h-3.5 text-brand-cyan-500" />
-                    <span>Cartão: <strong>Anual com Isenção de Instalação</strong></span>
+                    <span>Cartão: <strong>Compromisso Anual (Sem Cancelamento)</strong></span>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-brand-neutral-muted">
                     <Receipt className="w-3.5 h-3.5" />
-                    <span>Boleto: Recorrente via E-mail/WhatsApp</span>
+                    <span>Boleto: <strong>Sem Fidelidade (Cancele quando quiser)</strong></span>
                   </div>
                 </div>
                 <ul className="space-y-4 mb-10 flex-1">
