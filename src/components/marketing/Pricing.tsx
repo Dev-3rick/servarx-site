@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Check, Sparkles, ShieldCheck, CreditCard, Receipt } from 'lucide-react';
 import { Reveal } from '@/components/motion/Reveal';
 import { PRICING } from '@/lib/site';
