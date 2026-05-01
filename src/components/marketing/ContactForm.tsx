@@ -151,7 +151,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-brand-teal-800 px-6 py-4 font-semibold text-white shadow-cta transition-all hover:bg-brand-teal-700 hover:shadow-cta-accent disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[color:var(--color-ring)]"
+        className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-brand-teal-800 px-6 py-4 font-bold text-white shadow-cta transition-all hover:bg-brand-teal-700 hover:shadow-cta-accent hover:scale-[1.02] disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[color:var(--color-ring)]"
       >
         {submitting ? (
           <>
@@ -161,14 +161,19 @@ export function ContactForm() {
         ) : (
           <>
             <Send className="w-5 h-5" />
-            Enviar mensagem
+            Quero minha demonstração grátis
           </>
         )}
       </button>
 
-      <p className="text-xs text-brand-neutral-light text-center">
-        Ao enviar, você concorda com nossa{' '}
-        <a href="/privacidade" className="underline hover:text-brand-teal-800">Política de Privacidade</a>.
+      {/* Next-step reassurance — reduce post-submit anxiety */}
+      <p className="text-sm text-brand-neutral-muted text-center leading-relaxed">
+        📲 Nossa equipe responde em até 24h pelo WhatsApp — geralmente no mesmo dia.
+        <br />
+        <span className="text-xs text-brand-neutral-light">
+          Sem compromisso · sem ligação indesejada ·{' '}
+          <a href="/privacidade" className="underline hover:text-brand-teal-800">Política de Privacidade</a>
+        </span>
       </p>
     </form>
   );

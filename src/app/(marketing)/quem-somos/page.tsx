@@ -5,9 +5,9 @@ import { CTABanner } from '@/components/marketing/CTABanner';
 import { VALORES, SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Quem somos',
+  title: 'Quem somos — ServarX, IA para Clínicas do Interior de MG',
   description:
-    'A ServarX é uma empresa brasileira de IA aplicada a serviços. Começamos pelas clínicas — pelo dono que volta de plantão e ainda tem 40 mensagens no WhatsApp pra responder.',
+    'A ServarX foi criada por um engenheiro do interior de Minas Gerais que viu de perto a dor do dono de clínica. Conheça a história, os valores e a missão da empresa.',
 };
 
 const VALOR_ICONS = [Heart, Award, Shield, Bot];
@@ -221,9 +221,9 @@ export default function QuemSomosPage() {
       {/* CTA final — DARK */}
       <CTABanner
         eyebrow="VAMOS CONVERSAR"
-        title="Quer conversar com quem fundou?"
-        subtitle="Mando WhatsApp ainda hoje. Sem robô — sou eu mesmo respondendo."
-        ctaLabel="Falar com o Erick"
+        title="A ServarX nasceu para clínicas como a sua."
+        subtitle="Fala direto com o fundador. Não tem robô do outro lado — sou eu mesmo, de Barão de Cocais, respondendo."
+        ctaLabel="Falar com o Erick agora"
         ctaHref="/contato?ref=quem-somos"
         secondaryLabel="Ver o ServarClin"
         secondaryHref="/produtos/servarclin"

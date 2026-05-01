@@ -5,9 +5,9 @@ import { LogoIA } from '@/components/brand/LogoIA';
 import { Reveal } from '@/components/motion/Reveal';
 
 export const metadata: Metadata = {
-  title: 'Produtos',
+  title: 'Produtos ServarX — IA de Agendamento e Gestão para Clínicas',
   description:
-    'A ServarX constrói produtos de IA conversacional pra negócios de serviço. Hoje: ServarClin (clínicas). Em breve: outras verticais.',
+    'O ServarClin é a plataforma completa da ServarX: IA conversacional no WhatsApp, agenda semanal, gestão de pacientes, inbox de conversas e dashboard em tempo real. Feito para clínicas do interior.',
 };
 
 interface Produto {
