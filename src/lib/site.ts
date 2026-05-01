@@ -46,7 +46,7 @@ export const SITE = {
   produto: {
     nome: 'ServarClin',
     descricao: 'IA conversacional para clínicas no WhatsApp',
-    appUrl: 'https://app.servarx.com.br',
+    appUrl: 'https://servarclin.com.br',
   },
 } as const;
 
