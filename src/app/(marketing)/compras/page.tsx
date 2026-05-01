@@ -136,14 +136,16 @@ export default function ComprasPage() {
                   ))}
                 </ul>
                 <Link
-                  href={`/contato?ref=pricing-${tier.slug}`}
+                  href={tier.checkoutUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`block w-full py-4 rounded-full font-bold text-center transition-all ${
                     tier.destaque
                       ? 'bg-brand-teal-800 text-white shadow-cta hover:bg-brand-teal-700'
                       : 'border-2 border-brand-teal-800 text-brand-teal-800 hover:bg-brand-teal-800 hover:text-white'
                   }`}
                 >
-                  Selecionar {tier.nome.replace('ServarClin ', '')}
+                  Assinar {tier.nome.replace('ServarClin ', '')}
                 </Link>
               </div>
             </Reveal>

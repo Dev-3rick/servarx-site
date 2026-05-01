@@ -103,6 +103,7 @@ export const PRICING = {
         'Cifragem LGPD nível bancário',
       ],
       destaque: false,
+      checkoutUrl: 'https://www.asaas.com/c/placeholder-basico',
     },
     {
       slug: 'intermediario',
@@ -120,6 +121,7 @@ export const PRICING = {
         'Suporte prioritário',
       ],
       destaque: true,
+      checkoutUrl: 'https://www.asaas.com/c/placeholder-intermediario',
     },
     {
       slug: 'personalizado',
@@ -138,6 +140,7 @@ export const PRICING = {
         'Relatórios de BI e Conversão Avançados',
       ],
       destaque: false,
+      checkoutUrl: 'https://www.asaas.com/c/placeholder-max',
     },
   ],
   addons: [

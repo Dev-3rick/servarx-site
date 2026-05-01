@@ -331,14 +331,16 @@ export default function ServarClinMarketingPage() {
                     ))}
                   </ul>
                   <Link
-                    href={`/contato?ref=servarclin-${p.slug}`}
+                    href={p.checkoutUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`block text-center rounded-full px-6 py-3 font-semibold transition-all ${
                       p.destaque
                         ? 'bg-brand-teal-800 text-white hover:bg-brand-teal-700'
                         : 'border-2 border-brand-teal-800 text-brand-teal-800 hover:bg-brand-teal-800 hover:text-white'
                     }`}
                   >
-                    Selecionar {p.nome.replace('ServarClin ', '')}
+                    Assinar {p.nome.replace('ServarClin ', '')}
                   </Link>
                 </div>
               </Reveal>

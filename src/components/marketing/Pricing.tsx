@@ -84,7 +84,9 @@ export function Pricing() {
               </ul>
 
               <Link
-                href={`/contato?ref=${tier.slug}`}
+                href={tier.checkoutUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(
                   'block text-center rounded-full px-6 py-3.5 font-semibold transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[color:var(--color-ring)]',
                   tier.destaque
@@ -92,7 +94,7 @@ export function Pricing() {
                     : 'border-2 border-brand-teal-800 text-brand-teal-800 hover:bg-brand-teal-800 hover:text-white',
                 )}
               >
-                Falar sobre o {tier.nome.replace('ServarClin ', '')}
+                Assinar {tier.nome.replace('ServarClin ', '')}
               </Link>
             </Reveal>
           ))}
