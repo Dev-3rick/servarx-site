@@ -37,7 +37,7 @@ export function Hero() {
               </h1>
             </Reveal>
 
-            {/* Subheadline — transformation, not features */}
+            {/* Subheadline */}
             <Reveal immediate variant="up" delay={420} duration={1.1}>
               <p className="max-w-[680px] mx-auto text-lg leading-relaxed text-brand-neutral-muted lg:text-xl mb-10">
                 Do <em>"perdemos mais uma marcação"</em> para{' '}
@@ -64,7 +64,7 @@ export function Hero() {
               </div>
             </Reveal>
 
-            {/* Guarantee microcopy — specific and reassuring */}
+            {/* Guarantee microcopy */}
             <Reveal immediate variant="up" delay={800} duration={1.1}>
               <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-brand-neutral-muted">
                 <div className="flex items-center gap-2">

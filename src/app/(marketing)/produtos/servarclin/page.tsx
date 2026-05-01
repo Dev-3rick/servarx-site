@@ -1,244 +1,425 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Calendar, MessageSquare, FileText, Check, X, ExternalLink, Mic, Image as ImageIcon, RefreshCw, Heart, Stethoscope, Languages } from 'lucide-react';
-import { LogoIA } from '@/components/brand/LogoIA';
-import { Pricing } from '@/components/marketing/Pricing';
-import { CTABanner } from '@/components/marketing/CTABanner';
-import { ProductLd } from '@/components/seo/JsonLd';
+import {
+  ArrowRight,
+  BadgeCheck,
+  Bell,
+  Bot,
+  Calendar,
+  CheckCircle2,
+  Cpu,
+  LayoutDashboard,
+  MessageSquare,
+  ShieldCheck,
+  Sparkles,
+  Users,
+  ExternalLink,
+} from 'lucide-react';
+import { Reveal } from '@/components/motion/Reveal';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'ServarClin — IA conversacional pra clínicas no WhatsApp',
+  title: 'ServarClin — Secretária IA para Clínicas no WhatsApp',
   description:
-    'Atende, agenda e confirma consultas via WhatsApp 24h por dia. Para centros médicos multidisciplinares com até 10 médicos. R$ 349 a R$ 947/mês — flat fee, sem licença por médico.',
+    'O ServarClin coloca uma IA no WhatsApp da sua clínica que agenda, confirma e lembra pacientes 24h. Integrado ao Google Calendar. LGPD compliant. A partir de R$ 297/mês.',
 };
 
-const CAPACIDADES = [
+/* ─── Data ───────────────────────────────────────────────────────── */
+
+const FEATURES = [
   {
     icon: MessageSquare,
-    titulo: 'Atende e agenda',
-    descricao: 'Sua secretária digital, no WhatsApp, 24 horas por dia. Marca, remarca, cancela.',
+    title: 'Atendimento 24h no WhatsApp',
+    desc: 'A IA responde, agenda e tira dúvidas mesmo quando sua recepção está fechada — em português real, sem "digite 1".',
   },
   {
     icon: Calendar,
-    titulo: 'Confirma e lembra',
-    descricao: 'Lembrete 24h e 2h antes da consulta. Reduz no-show sem ninguém ter que ligar.',
+    title: 'Google Calendar integrado',
+    desc: 'Cada médico vê os agendamentos no calendário que já usa. Sem conflito de horário, sem double-booking.',
   },
   {
-    icon: FileText,
-    titulo: 'Lembra do paciente',
-    descricao: 'Cada conversa fica salva. Pós-consulta personalizado sem você anotar nada.',
+    icon: Bell,
+    title: 'Lembrete automático -40% no-show',
+    desc: 'Envia lembrete 24h antes. O paciente confirma ou remarca com 1 mensagem — sem você ligar para ninguém.',
+  },
+  {
+    icon: LayoutDashboard,
+    title: 'Dashboard em tempo real',
+    desc: 'Novos contatos, agendamentos do dia e próximas consultas na tela principal assim que você abre o sistema.',
+  },
+  {
+    icon: Users,
+    title: 'Gestão de pacientes (LGPD)',
+    desc: 'Cadastro automático via conversa. Dados criptografados com AES-256 — conformidade total com a LGPD.',
+  },
+  {
+    icon: Bot,
+    title: 'IA com personalidade configurável',
+    desc: 'Você define o nome, tom de voz e escopo da assistente. Ela se apresenta como parte da sua clínica, não como um robô genérico.',
   },
 ];
 
-const PARIDADE = [
-  { icon: Calendar, titulo: 'Sincroniza com Google Agenda em tempo real', descricao: 'Sem double-booking. Bidirecional.' },
-  { icon: RefreshCw, titulo: 'Lembrete automático 24h e 2h antes', descricao: 'Confirmação ou remarcação no próprio fluxo do WhatsApp.' },
-  { icon: ImageIcon, titulo: 'Lê áudio e imagem', descricao: 'Transcreve áudio do paciente. Lê foto da carteirinha.' },
-];
-
-const DIFERENCIAIS = [
+const STEPS = [
   {
-    icon: Heart,
-    titulo: 'Memória familiar',
-    descricao: '"Doutor, lembrei que a senhora marcou pro Lucas no mês passado." A IA conhece a família como a recepcionista do interior conhece.',
+    n: '01',
+    title: 'Conecte seu WhatsApp',
+    desc: 'Em 5 minutos, escaneando um QR Code. Sem trocar de número, sem depender de TI.',
   },
   {
-    icon: Stethoscope,
-    titulo: 'Triagem multidisciplinar',
-    descricao: 'Paciente relata dor, a IA cruza com a especialidade certa disponível, respeitando regras de convênio por médico.',
+    n: '02',
+    title: 'Configure sua clínica',
+    desc: 'Cadastre médicos, horários e convênios. A IA aprende as regras da sua clínica automaticamente.',
   },
   {
-    icon: Languages,
-    titulo: 'Sotaque e vocabulário local',
-    descricao: 'A IA fala como gente do interior fala — não "padrão Faria Lima". Customizável sem código.',
+    n: '03',
+    title: 'Sua clínica nunca mais perde paciente',
+    desc: 'O WhatsApp começa a atender sozinho 24h. Você monitora tudo pelo painel.',
   },
 ];
 
-export default function ServarClinPage() {
+const PLANS = [
+  {
+    slug: 'clinica-solo',
+    name: 'Clínica Solo',
+    price: 297,
+    desc: 'Ideal para 1 a 2 médicos começando a automatizar',
+    features: ['Até 2 profissionais', '200 consultas IA/mês', '1 número WhatsApp'],
+    highlight: false,
+  },
+  {
+    slug: 'centro-medico',
+    name: 'Centro Médico',
+    price: 597,
+    desc: 'Mais escolhido — clínicas multidisciplinares com agenda cheia',
+    features: ['Até 10 profissionais', '2.000 mensagens IA/mês', 'Google Calendar + lembretes'],
+    highlight: true,
+  },
+  {
+    slug: 'rede-clinica',
+    name: 'Rede Clínica',
+    price: 997,
+    desc: 'Volume alto + suporte prioritário',
+    features: ['Profissionais ilimitados', '10.000 mensagens IA/mês', 'Suporte ≤4h'],
+    highlight: false,
+  },
+];
+
+/* ─── Page ───────────────────────────────────────────────────────── */
+
+export default function ServarClinMarketingPage() {
   return (
     <>
-      <ProductLd
-        name="ServarClin"
-        description="IA conversacional pra clínicas no WhatsApp. Atende, agenda e confirma consultas 24h por dia."
-        url={`${SITE.url}/produtos/servarclin`}
-        priceRange="349-947"
-      />
-
-      {/* Hero */}
+      {/* ── HERO ─────────────────────────────────────────────────── */}
       <section
-        className="px-6 py-20 lg:px-12 lg:py-28"
+        className="relative overflow-hidden px-6 py-20 lg:px-12 lg:py-28"
         style={{ background: 'var(--gradient-hero-glow)' }}
       >
         <div className="max-w-page-xl mx-auto">
-          <div className="text-center mb-10">
-            <p
-              className="mb-6 font-mono uppercase tracking-[0.18em] text-brand-cyan-600"
-              style={{ fontSize: 'var(--text-eyebrow)' }}
-            >
-              SERVARCLIN · UM PRODUTO SERVARX
-            </p>
-            <h1
-              className="font-bold tracking-tight text-brand-teal-800 leading-[1.05] mb-6 mx-auto max-w-page-lg"
-              style={{ fontSize: 'clamp(2.25rem, 6vw, var(--text-hero))' }}
-            >
-              Sua secretária digital,{' '}
-              <span style={{ background: 'var(--gradient-brand-text)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                no WhatsApp
-              </span>
-              , 24 horas por dia.
-            </h1>
-            <p className="max-w-page-md mx-auto text-lg lg:text-xl text-brand-neutral-muted leading-relaxed mb-4">
-              Movida pela <LogoIA name="ServarX.IA" size="sm" /> — a IA conversacional da ServarX.
-            </p>
-            <p className="max-w-page-md mx-auto text-base text-brand-neutral-muted leading-relaxed">
-              Atende, agenda, lembra e cancela consultas via WhatsApp. Sem "digite 1 pra agendar".
-              Sem licença extra por médico. Construída pro centro médico do interior.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-14 items-center">
+            {/* Copy */}
+            <div>
+              <Reveal immediate variant="up" delay={100}>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan-400/10 border border-brand-cyan-400/20 text-brand-cyan-600 text-xs font-semibold mb-6 uppercase tracking-wider">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan-400" />
+                  </span>
+                  ServarClin · Produto ServarX
+                </div>
+              </Reveal>
 
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Reveal immediate variant="up" delay={200}>
+                <h1
+                  className="font-bold tracking-tight text-brand-teal-800 leading-[1.1] mb-6"
+                  style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)' }}
+                >
+                  Cada mensagem sem resposta é{' '}
+                  <span
+                    style={{
+                      background: 'linear-gradient(135deg, #0891b2 0%, #0f766e 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    uma consulta perdida.
+                  </span>
+                </h1>
+              </Reveal>
+
+              <Reveal immediate variant="up" delay={320}>
+                <p className="text-lg text-brand-neutral-muted leading-relaxed mb-8 max-w-[520px]">
+                  O ServarClin coloca uma IA treinada no WhatsApp da sua clínica. Ela agenda,
+                  confirma e lembra pacientes — enquanto você está no consultório, ou dormindo.
+                </p>
+              </Reveal>
+
+              <Reveal immediate variant="up" delay={440}>
+                <div className="flex flex-wrap gap-3 mb-6">
+                  <Link
+                    href="/contato?ref=servarclin-hero"
+                    className="inline-flex items-center gap-2 rounded-full bg-brand-teal-800 px-8 py-4 font-bold text-white shadow-cta hover:bg-brand-teal-700 hover:scale-105 transition-all"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    Ver demonstração gratuita
+                  </Link>
+                  <Link
+                    href={SITE.produto.appUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border-2 border-brand-teal-800 px-8 py-4 font-semibold text-brand-teal-800 hover:bg-brand-teal-800 hover:text-white transition-all"
+                  >
+                    Já sou cliente <ExternalLink className="w-4 h-4" />
+                  </Link>
+                </div>
+                <p className="text-xs text-brand-neutral-muted">
+                  🛡️ Garantia de 30 dias · Sem cartão de crédito · Suporte em PT-BR
+                </p>
+              </Reveal>
+            </div>
+
+            {/* Chat mockup */}
+            <Reveal immediate variant="up" delay={300}>
+              <div className="relative max-w-[420px] mx-auto">
+                <div className="bg-white rounded-2xl shadow-large border border-brand-neutral-border overflow-hidden">
+                  {/* WhatsApp header */}
+                  <div className="bg-brand-teal-800 px-5 py-4 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-brand-cyan-500/20 flex items-center justify-center">
+                      <Bot className="w-5 h-5 text-brand-cyan-400" />
+                    </div>
+                    <div>
+                      <p className="text-white font-semibold text-sm">ServarX.IA</p>
+                      <p className="text-brand-cyan-400 text-xs flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> online agora
+                      </p>
+                    </div>
+                  </div>
+                  {/* Messages */}
+                  <div className="px-5 py-5 space-y-3" style={{ background: '#ECE5DD' }}>
+                    {[
+                      { side: 'them', text: 'Oi! Sou a assistente da Clínica São Lucas 👋' },
+                      { side: 'me', text: 'Quero marcar com a Dra. Carolina' },
+                      { side: 'them', text: 'Tenho quinta (08/05) às 10h30 disponível. Confirmo?' },
+                      { side: 'me', text: 'Sim! Perfeito ✨' },
+                      { side: 'them', text: 'Agendado! Te lembro 24h antes 🗓️' },
+                    ].map((m, i) => (
+                      <div key={i} className={`flex ${m.side === 'me' ? 'justify-end' : 'justify-start'}`}>
+                        <div
+                          className={`max-w-[78%] rounded-2xl px-3.5 py-2 text-sm leading-relaxed shadow-sm ${
+                            m.side === 'me'
+                              ? 'bg-[#DCF8C6] text-gray-800 rounded-br-sm'
+                              : 'bg-white text-gray-800 rounded-bl-sm'
+                          }`}
+                        >
+                          {m.text}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* Floating glow */}
+                <div
+                  className="absolute -inset-4 -z-10 opacity-20 blur-3xl rounded-full"
+                  style={{ background: 'radial-gradient(ellipse, #22d3ee 0%, transparent 70%)' }}
+                />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── TRUST STRIP ──────────────────────────────────────────── */}
+      <section className="border-y border-brand-neutral-border bg-white">
+        <div className="max-w-page-xl mx-auto px-6 py-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm text-brand-neutral-muted">
+          {[
+            { icon: ShieldCheck, text: 'LGPD compliance' },
+            { icon: BadgeCheck, text: 'Dados isolados por clínica' },
+            { icon: Cpu, text: 'IA auditada · log completo' },
+            { icon: Bell, text: '-40% no-show comprovado' },
+          ].map((t) => (
+            <span key={t.text} className="inline-flex items-center gap-2 font-medium">
+              <t.icon className="w-4 h-4 text-brand-cyan-500" />
+              {t.text}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* ── FEATURES ─────────────────────────────────────────────── */}
+      <section className="py-24 lg:py-32 px-6 lg:px-8" id="funcionalidades">
+        <div className="max-w-page-xl mx-auto">
+          <Reveal variant="up">
+            <div className="text-center mb-14">
+              <p className="font-mono uppercase tracking-[0.18em] text-brand-cyan-600 text-xs font-bold mb-4">
+                Funcionalidades
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-brand-teal-800 tracking-tight mb-4">
+                Tudo que sua clínica precisa para parar de perder paciente.
+              </h2>
+              <p className="text-brand-neutral-muted max-w-xl mx-auto">
+                Construído por engenheiros que viram clínicas perderem 30% das consultas por atendimento
+                manual fora de hora.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {FEATURES.map((f, i) => (
+              <Reveal key={f.title} variant="up" delay={i * 80}>
+                <div className="rounded-2xl border border-brand-neutral-border bg-white p-6 h-full hover:border-brand-cyan-400/40 hover:shadow-medium transition-all">
+                  <div className="w-11 h-11 rounded-xl bg-brand-cyan-100 text-brand-cyan-600 flex items-center justify-center mb-4">
+                    <f.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="font-bold text-brand-teal-800 mb-2">{f.title}</h3>
+                  <p className="text-sm text-brand-neutral-muted leading-relaxed">{f.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW IT WORKS ─────────────────────────────────────────── */}
+      <section className="py-24 bg-white border-y border-brand-neutral-border px-6 lg:px-8" id="como-funciona">
+        <div className="max-w-page-xl mx-auto">
+          <Reveal variant="up">
+            <div className="text-center mb-14">
+              <p className="font-mono uppercase tracking-[0.18em] text-brand-cyan-600 text-xs font-bold mb-4">
+                Como funciona
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-brand-teal-800 tracking-tight">
+                3 passos. Nenhum técnico precisa ser contratado.
+              </h2>
+            </div>
+          </Reveal>
+          <div className="grid md:grid-cols-3 gap-8">
+            {STEPS.map((s, i) => (
+              <Reveal key={s.n} variant="up" delay={i * 120}>
+                <div className="relative">
+                  <div className="text-5xl font-extrabold text-brand-cyan-100 mb-3">{s.n}</div>
+                  <h3 className="text-xl font-bold text-brand-teal-800 mb-2">{s.title}</h3>
+                  <p className="text-brand-neutral-muted leading-relaxed">{s.desc}</p>
+                  {i < STEPS.length - 1 && (
+                    <ArrowRight className="hidden md:block absolute top-8 -right-4 w-5 h-5 text-brand-neutral-light" />
+                  )}
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRICING ──────────────────────────────────────────────── */}
+      <section className="py-24 lg:py-32 px-6 lg:px-8" id="planos">
+        <div className="max-w-page-xl mx-auto">
+          <Reveal variant="up">
+            <div className="text-center mb-14">
+              <p className="font-mono uppercase tracking-[0.18em] text-brand-cyan-600 text-xs font-bold mb-4">
+                Planos
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-brand-teal-800 tracking-tight mb-4">
+                Preço por clínica — não por médico.
+              </h2>
+              <p className="text-brand-neutral-muted">
+                Você paga pela clínica. Não importa se tem 1 ou 10 médicos atendendo.
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-5 mb-8">
+            {PLANS.map((p, i) => (
+              <Reveal key={p.slug} variant="up" delay={i * 100}>
+                <div
+                  className={`rounded-2xl border p-8 flex flex-col relative ${
+                    p.highlight
+                      ? 'border-brand-teal-800 shadow-large lg:scale-[1.03] z-10 bg-white'
+                      : 'border-brand-neutral-border bg-white'
+                  }`}
+                >
+                  {p.highlight && (
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-teal-800 text-brand-cyan-400 text-xs font-bold uppercase tracking-wider">
+                      Mais escolhido
+                    </div>
+                  )}
+                  <h3 className="text-lg font-bold text-brand-teal-800 mb-1">{p.name}</h3>
+                  <p className="text-xs text-brand-neutral-muted mb-5">{p.desc}</p>
+                  <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-brand-neutral-border">
+                    <span className="text-4xl font-bold text-brand-teal-800">
+                      R$ {p.price}
+                    </span>
+                    <span className="text-sm text-brand-neutral-muted">/mês</span>
+                  </div>
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2.5 text-sm text-brand-neutral-muted">
+                        <CheckCircle2 className="w-4 h-4 text-brand-cyan-500 flex-shrink-0 mt-0.5" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={`/contato?ref=servarclin-${p.slug}`}
+                    className={`block text-center rounded-full px-6 py-3 font-semibold transition-all ${
+                      p.highlight
+                        ? 'bg-brand-teal-800 text-white hover:bg-brand-teal-700'
+                        : 'border-2 border-brand-teal-800 text-brand-teal-800 hover:bg-brand-teal-800 hover:text-white'
+                    }`}
+                  >
+                    Falar sobre o {p.name}
+                  </Link>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Garantia */}
+          <Reveal variant="fade">
+            <div className="text-center p-6 rounded-2xl border-2 border-brand-cyan-400 bg-brand-cyan-50 max-w-xl mx-auto">
+              <p className="font-bold text-brand-teal-800 mb-1">🛡️ Garantia incondicional de 30 dias</p>
+              <p className="text-sm text-brand-neutral-muted">
+                Não funcionou para sua clínica? Devolvemos 100% do valor. Sem perguntas, sem letrinha miúda.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ────────────────────────────────────────────── */}
+      <section className="py-20 bg-brand-teal-800 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{ background: 'var(--gradient-hero-spot)' }}
+        />
+        <Reveal variant="up">
+          <div className="relative max-w-page-md mx-auto px-6 text-center">
+            <h2 className="text-3xl lg:text-4xl font-bold text-white tracking-tight mb-4">
+              Sua clínica merece uma secretária que trabalha 24h.
+            </h2>
+            <p className="text-white/70 text-lg mb-8">
+              Em 5 minutos a gente te mostra como fica para a sua clínica, ao vivo.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/contato?ref=servarclin-hero"
-                className="rounded-full bg-brand-teal-800 px-8 py-4 font-semibold text-white shadow-cta hover:bg-brand-teal-700 hover:shadow-cta-accent transition-all"
+                href="/contato?ref=servarclin-final"
+                className="inline-flex items-center gap-2 rounded-full bg-white text-brand-teal-800 px-8 py-4 font-bold hover:bg-brand-cyan-50 hover:scale-105 transition-all shadow-cta-accent"
               >
-                Falar sobre o ServarClin
+                Ver demonstração grátis <ArrowRight className="w-4 h-4" />
               </Link>
-              <a
+              <Link
                 href={SITE.produto.appUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-brand-teal-800 px-8 py-4 font-semibold text-brand-teal-800 hover:bg-brand-teal-800 hover:text-white transition-all"
+                className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm transition-colors"
               >
-                Já sou cliente <ExternalLink className="w-4 h-4" />
-              </a>
+                Já sou cliente — entrar <ExternalLink className="w-3.5 h-3.5" />
+              </Link>
             </div>
+            <p className="mt-4 text-white/40 text-xs">
+              Sem compromisso · Demonstração ao vivo · Implantação assistida inclusa
+            </p>
           </div>
-        </div>
+        </Reveal>
       </section>
-
-      {/* 3 capacidades */}
-      <section className="px-6 py-20 lg:px-12 lg:py-28 bg-surface border-y border-border">
-        <div className="max-w-page-xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="mb-4 font-mono uppercase tracking-[0.18em] text-brand-cyan-600 text-xs">CAPACIDADES</p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-brand-teal-800 leading-tight max-w-page-lg mx-auto">
-              3 coisas que o ServarClin faz — sem ninguém precisar tocar.
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {CAPACIDADES.map((c) => {
-              const Icon = c.icon;
-              return (
-                <article key={c.titulo} className="rounded-2xl border border-border bg-brand-neutral-bg p-8">
-                  <div className="mb-5 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-brand-cyan-100 text-brand-teal-800">
-                    <Icon className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-brand-teal-800 mb-3">{c.titulo}</h3>
-                  <p className="text-brand-neutral-muted leading-relaxed">{c.descricao}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Para quem é / não é */}
-      <section className="px-6 py-20 lg:px-12 lg:py-28">
-        <div className="max-w-page-xl mx-auto">
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-3xl border-2 border-brand-cyan-400 bg-brand-cyan-50 p-8 lg:p-10">
-              <h3 className="text-2xl font-bold text-brand-teal-800 mb-6 inline-flex items-center gap-2">
-                <Check className="w-7 h-7" aria-hidden="true" /> Para quem é
-              </h3>
-              <ul className="space-y-3 text-brand-neutral-muted">
-                <li className="flex gap-3"><Check className="w-5 h-5 text-brand-cyan-600 flex-shrink-0 mt-0.5" /> Centros médicos multidisciplinares (1 a 10 médicos)</li>
-                <li className="flex gap-3"><Check className="w-5 h-5 text-brand-cyan-600 flex-shrink-0 mt-0.5" /> Clínicas de bairro / interior</li>
-                <li className="flex gap-3"><Check className="w-5 h-5 text-brand-cyan-600 flex-shrink-0 mt-0.5" /> Mistura de particular e convênios populares</li>
-                <li className="flex gap-3"><Check className="w-5 h-5 text-brand-cyan-600 flex-shrink-0 mt-0.5" /> Médico-dono que decide pelo próprio bolso</li>
-                <li className="flex gap-3"><Check className="w-5 h-5 text-brand-cyan-600 flex-shrink-0 mt-0.5" /> Quem perdeu paciente por WhatsApp lento</li>
-              </ul>
-            </div>
-            <div className="rounded-3xl border-2 border-border bg-brand-neutral-bg p-8 lg:p-10">
-              <h3 className="text-2xl font-bold text-brand-neutral-muted mb-6 inline-flex items-center gap-2">
-                <X className="w-7 h-7" aria-hidden="true" /> Para quem não é
-              </h3>
-              <ul className="space-y-3 text-brand-neutral-light">
-                <li className="flex gap-3"><X className="w-5 h-5 flex-shrink-0 mt-0.5" /> Quem precisa de prontuário eletrônico (procura iClinic, Feegow)</li>
-                <li className="flex gap-3"><X className="w-5 h-5 flex-shrink-0 mt-0.5" /> Hospitais ou redes com mais de 10 médicos (a gente conversa antes)</li>
-                <li className="flex gap-3"><X className="w-5 h-5 flex-shrink-0 mt-0.5" /> Quem quer sistema completo de gestão financeira / TISS</li>
-                <li className="flex gap-3"><X className="w-5 h-5 flex-shrink-0 mt-0.5" /> Clínicas que não querem usar WhatsApp Business oficial</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features de paridade */}
-      <section className="px-6 py-20 lg:px-12 lg:py-28 bg-surface border-y border-border">
-        <div className="max-w-page-xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="mb-4 font-mono uppercase tracking-[0.18em] text-brand-cyan-600 text-xs">FEATURES</p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-brand-teal-800 leading-tight max-w-page-md mx-auto">
-              Tudo que se espera de um SaaS clínico moderno.
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {PARIDADE.map((f) => {
-              const Icon = f.icon;
-              return (
-                <article key={f.titulo} className="flex gap-4">
-                  <div className="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-xl bg-brand-cyan-100 text-brand-teal-800">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-brand-teal-800 mb-1">{f.titulo}</h3>
-                    <p className="text-sm text-brand-neutral-muted leading-relaxed">{f.descricao}</p>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Diferenciais */}
-      <section className="px-6 py-20 lg:px-12 lg:py-28">
-        <div className="max-w-page-xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="mb-4 font-mono uppercase tracking-[0.18em] text-brand-cyan-600 text-xs">DIFERENCIAIS · ONDE NINGUÉM FOCA</p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-brand-teal-800 leading-tight max-w-page-lg mx-auto">
-              3 coisas que só o ServarClin tem.
-            </h2>
-          </div>
-          <div className="grid gap-6 md:grid-cols-3">
-            {DIFERENCIAIS.map((d) => {
-              const Icon = d.icon;
-              return (
-                <article key={d.titulo} className="rounded-2xl border-2 border-brand-cyan-200 bg-brand-cyan-50/50 p-8">
-                  <div className="mb-5 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white text-brand-teal-800 shadow-soft">
-                    <Icon className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-brand-teal-800 mb-3">{d.titulo}</h3>
-                  <p className="text-brand-neutral-muted leading-relaxed">{d.descricao}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing */}
-      <Pricing />
-
-      <CTABanner
-        eyebrow="ÚLTIMA PARADA"
-        title="Pronto pra liberar sua agenda?"
-        subtitle="Em 5 minutos a gente te mostra como ficaria pra sua clínica. Garantia de 30 dias com reembolso."
-        ctaLabel="Falar com a gente"
-        ctaHref="/contato?ref=servarclin-final"
-        secondaryLabel="Já sou cliente"
-        secondaryHref={SITE.produto.appUrl}
-      />
     </>
   );
 }
