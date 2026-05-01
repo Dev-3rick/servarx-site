@@ -13,7 +13,7 @@ import {
   Rocket,
 } from 'lucide-react';
 import { Reveal } from '@/components/motion/Reveal';
-import { SITE } from '@/lib/site';
+import { SITE, PRICING } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Planos e Preços — ServarClin',
@@ -23,73 +23,22 @@ export const metadata: Metadata = {
 
 /* ─── Data ───────────────────────────────────────────────────────── */
 
-const PRICING_DATA = {
-  setup: 499,
-  tiers: [
-    {
-      slug: 'solo',
-      nome: 'Clínica Solo',
-      preco: 297,
-      publico: 'Ideal para 1 a 2 médicos',
-      features: [
-        'Atendimento 24h via WhatsApp',
-        'Até 200 agendamentos IA/mês',
-        '1 Número de WhatsApp dedicado',
-        'Google Calendar integrado',
-        'Lembretes automáticos 24h antes',
-        'Cifragem LGPD (AES-256)',
-      ],
-      destaque: false,
-    },
-    {
-      slug: 'centro-medico',
-      nome: 'Centro Médico',
-      preco: 597,
-      publico: 'Clínicas em crescimento (mais escolhido)',
-      features: [
-        'Tudo do Clínica Solo',
-        'Até 2.000 mensagens IA/mês',
-        'Gestão de até 10 profissionais',
-        'Motor de reagendamento ativo',
-        'Relatório mensal de desempenho',
-        'Suporte prioritário via WhatsApp',
-      ],
-      destaque: true,
-    },
-    {
-      slug: 'rede-clinica',
-      nome: 'Rede Clínica',
-      preco: 997,
-      publico: 'Volume alto e centros multidisciplinares',
-      features: [
-        'Tudo do Centro Médico',
-        'Até 10.000 mensagens IA/mês',
-        'Profissionais ilimitados',
-        'Suporte VIP (canal direto ≤4h)',
-        'Fine-tuning clínico personalizado',
-        'Onboarding assistido premium',
-      ],
-      destaque: false,
-    },
-  ],
-};
-
 const FAQ = [
+  {
+    q: 'Qual a diferença entre a integração do Google Agenda nos planos Básico e Intermediário?',
+    a: 'No plano Básico, a IA consegue ler sua agenda para informar horários disponíveis, mas o agendamento final deve ser feito manualmente por sua equipe. No Intermediário, a IA escreve diretamente na agenda, realizando o agendamento completo de ponta a ponta sem intervenção humana.',
+  },
+  {
+    q: 'Como funciona a interpretação de áudio no plano Intermediário?',
+    a: 'Muitos pacientes preferem mandar áudio no WhatsApp. No plano Intermediário, nossa IA transcreve e entende a intenção do áudio do paciente (ex: "quero marcar uma consulta para terça"), respondendo adequadamente e processando a solicitação.',
+  },
+  {
+    q: 'O que é a "Inteligência de Retorno"?',
+    a: 'É um sistema de fidelização automática. Se um paciente faz uma limpeza dental que precisa ser repetida a cada 6 meses, a IA monitora esse prazo e entra em contato automaticamente com o paciente 15 dias antes do prazo vencer para oferecer o agendamento do retorno.',
+  },
   {
     q: 'Preciso trocar meu número de WhatsApp?',
     a: 'Não. Você pode usar o número que sua clínica já tem hoje. A conexão é feita em 5 minutos via QR Code, exatamente como no WhatsApp Web.',
-  },
-  {
-    q: 'A IA pode dar diagnóstico médico errado?',
-    a: 'Nunca. O ServarClin tem um "Auditor de IA" que bloqueia qualquer tentativa de diagnóstico. Ela só responde dúvidas administrativas e agenda consultas seguindo as regras que você definir.',
-  },
-  {
-    q: 'Funciona com convênios?',
-    a: 'Sim. Você configura quais médicos atendem quais convênios e a IA filtra os horários corretamente durante a conversa com o paciente.',
-  },
-  {
-    q: 'Como funciona a integração com o Google Calendar?',
-    a: 'Cada profissional da sua clínica conecta seu Google Calendar. A IA lê a disponibilidade real em tempo real e, ao marcar a consulta, o horário aparece automaticamente no calendário do médico.',
   },
   {
     q: 'Os dados dos pacientes estão seguros?',
@@ -156,7 +105,7 @@ export default function ComprasPage() {
       {/* ── PRICING CARDS ────────────────────────────────────────── */}
       <section className="px-6 -mt-16 pb-24 lg:px-12 relative z-20">
         <div className="max-w-page-xl mx-auto grid md:grid-cols-3 gap-6">
-          {PRICING_DATA.tiers.map((tier, i) => (
+          {PRICING.tiers.map((tier, i) => (
             <Reveal key={tier.slug} variant="up" delay={i * 100}>
               <div
                 className={`h-full rounded-3xl border p-8 flex flex-col relative transition-all hover:shadow-large ${
@@ -194,7 +143,7 @@ export default function ComprasPage() {
                       : 'border-2 border-brand-teal-800 text-brand-teal-800 hover:bg-brand-teal-800 hover:text-white'
                   }`}
                 >
-                  Selecionar {tier.nome}
+                  Selecionar {tier.nome.replace('ServarClin ', '')}
                 </Link>
               </div>
             </Reveal>
@@ -220,8 +169,8 @@ export default function ComprasPage() {
                 <HelpCircle className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="font-bold text-brand-teal-800">Taxa de Implantação: {formatBRL(PRICING_DATA.setup)}</h4>
-                <p className="text-sm text-brand-neutral-muted">Configuração completa, treinamento e suporte premium no primeiro mês.</p>
+                <h4 className="font-bold text-brand-teal-800">Taxa de Implantação: {formatBRL(PRICING.setup)}</h4>
+                <p className="text-sm text-brand-neutral-muted">{PRICING.setupNarrativa}.</p>
               </div>
             </div>
           </Reveal>
@@ -303,7 +252,7 @@ export default function ComprasPage() {
                 Ativar atendimento 24h
               </Link>
               <Link
-                href="https://wa.me/5531000000000"
+                href={`https://wa.me/${SITE.whatsapp}`}
                 target="_blank"
                 className="w-full sm:w-auto px-10 py-5 rounded-full border-2 border-white/30 text-white font-bold hover:bg-white/10 transition-all"
               >

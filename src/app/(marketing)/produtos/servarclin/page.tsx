@@ -16,7 +16,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { Reveal } from '@/components/motion/Reveal';
-import { SITE } from '@/lib/site';
+import { SITE, PRICING } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'ServarClin — Secretária IA para Clínicas no WhatsApp',
@@ -74,33 +74,6 @@ const STEPS = [
     n: '03',
     title: 'Sua clínica nunca mais perde paciente',
     desc: 'O WhatsApp começa a atender sozinho 24h. Você monitora tudo pelo painel.',
-  },
-];
-
-const PLANS = [
-  {
-    slug: 'clinica-solo',
-    name: 'Clínica Solo',
-    price: 297,
-    desc: 'Ideal para 1 a 2 médicos começando a automatizar',
-    features: ['Até 2 profissionais', '200 consultas IA/mês', '1 número WhatsApp'],
-    highlight: false,
-  },
-  {
-    slug: 'centro-medico',
-    name: 'Centro Médico',
-    price: 597,
-    desc: 'Mais escolhido — clínicas multidisciplinares com agenda cheia',
-    features: ['Até 10 profissionais', '2.000 mensagens IA/mês', 'Google Calendar + lembretes'],
-    highlight: true,
-  },
-  {
-    slug: 'rede-clinica',
-    name: 'Rede Clínica',
-    price: 997,
-    desc: 'Volume alto + suporte prioritário',
-    features: ['Profissionais ilimitados', '10.000 mensagens IA/mês', 'Suporte ≤4h'],
-    highlight: false,
   },
 ];
 
@@ -327,25 +300,25 @@ export default function ServarClinMarketingPage() {
           </Reveal>
 
           <div className="grid md:grid-cols-3 gap-5 mb-8">
-            {PLANS.map((p, i) => (
+            {PRICING.tiers.map((p, i) => (
               <Reveal key={p.slug} variant="up" delay={i * 100}>
                 <div
                   className={`rounded-2xl border p-8 flex flex-col relative ${
-                    p.highlight
+                    p.destaque
                       ? 'border-brand-teal-800 shadow-large lg:scale-[1.03] z-10 bg-white'
                       : 'border-brand-neutral-border bg-white'
                   }`}
                 >
-                  {p.highlight && (
+                  {p.destaque && (
                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-teal-800 text-brand-cyan-400 text-xs font-bold uppercase tracking-wider">
                       Mais escolhido
                     </div>
                   )}
-                  <h3 className="text-lg font-bold text-brand-teal-800 mb-1">{p.name}</h3>
-                  <p className="text-xs text-brand-neutral-muted mb-5">{p.desc}</p>
+                  <h3 className="text-lg font-bold text-brand-teal-800 mb-1">{p.nome}</h3>
+                  <p className="text-xs text-brand-neutral-muted mb-5">{p.publico}</p>
                   <div className="flex items-baseline gap-1 mb-6 pb-6 border-b border-brand-neutral-border">
                     <span className="text-4xl font-bold text-brand-teal-800">
-                      R$ {p.price}
+                      R$ {p.preco}
                     </span>
                     <span className="text-sm text-brand-neutral-muted">/mês</span>
                   </div>
@@ -360,12 +333,12 @@ export default function ServarClinMarketingPage() {
                   <Link
                     href={`/contato?ref=servarclin-${p.slug}`}
                     className={`block text-center rounded-full px-6 py-3 font-semibold transition-all ${
-                      p.highlight
+                      p.destaque
                         ? 'bg-brand-teal-800 text-white hover:bg-brand-teal-700'
                         : 'border-2 border-brand-teal-800 text-brand-teal-800 hover:bg-brand-teal-800 hover:text-white'
                     }`}
                   >
-                    Falar sobre o {p.name}
+                    Selecionar {p.nome.replace('ServarClin ', '')}
                   </Link>
                 </div>
               </Reveal>
@@ -377,7 +350,7 @@ export default function ServarClinMarketingPage() {
             <div className="text-center p-6 rounded-2xl border-2 border-brand-cyan-400 bg-brand-cyan-50 max-w-xl mx-auto">
               <p className="font-bold text-brand-teal-800 mb-1">🛡️ Garantia incondicional de 30 dias</p>
               <p className="text-sm text-brand-neutral-muted">
-                Não funcionou para sua clínica? Devolvemos 100% do valor. Sem perguntas, sem letrinha miúda.
+                Não funcionou para sua clínica? Devolvemos 100% do valor da mensalidade. Sem perguntas, sem letrinha miúda.
               </p>
             </div>
           </Reveal>
