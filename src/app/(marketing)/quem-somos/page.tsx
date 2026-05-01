@@ -222,7 +222,7 @@ export default function QuemSomosPage() {
       <CTABanner
         eyebrow="VAMOS CONVERSAR"
         title="A ServarX nasceu para clínicas como a sua."
-        subtitle="Fala direto com o fundador. Não tem robô do outro lado — sou eu mesmo, de Barão de Cocais, respondendo."
+        subtitle="A IA cuida dos seus pacientes. O Erick cuida da sua clínica. Fala com o fundador e veja a demonstração ao vivo."
         ctaLabel="Falar com o Erick agora"
         ctaHref="/contato?ref=quem-somos"
         secondaryLabel="Ver o ServarClin"

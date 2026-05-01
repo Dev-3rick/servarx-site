@@ -62,8 +62,8 @@ export function ContactForm() {
     // Simula envio
     await new Promise((r) => setTimeout(r, 800));
 
-    toast.success('Recebemos sua mensagem!', {
-      description: 'Vou te chamar no WhatsApp ainda hoje. Sem robô, sou eu mesmo.',
+    toast.success('Solicitação recebida!', {
+      description: 'O Erick analisa o perfil da sua clínica e entra em contato em até 24h pelo WhatsApp.',
       duration: 6000,
     });
     setSubmitting(false);
