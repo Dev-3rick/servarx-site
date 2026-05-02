@@ -90,7 +90,7 @@ export const PRICING = {
     {
       slug: 'basico',
       nome: 'ServarClin Básico',
-      preco: 297,
+      preco: 330,
       publico: 'Ideal para 1 a 2 médicos começando',
       medicosLimite: 2,
       mensagensLimite: 999999, // Ilimitado
@@ -103,14 +103,14 @@ export const PRICING = {
         'Cifragem LGPD nível bancário',
       ],
       destaque: false,
-      checkoutUrl: 'https://www.asaas.com/c/checkout-servarclin',
+      checkoutUrl: 'https://servarclin.com.br/checkout?plan=starter',
     },
     {
       slug: 'intermediario',
       nome: 'ServarClin Intermediário',
-      preco: 597,
+      preco: 608,
       publico: 'Clínicas em crescimento (mais escolhido)',
-      medicosLimite: 10,
+      medicosLimite: 7,
       mensagensLimite: 999999, // Ilimitado
       features: [
         'Tudo do Básico',
@@ -121,14 +121,14 @@ export const PRICING = {
         'Suporte prioritário',
       ],
       destaque: true,
-      checkoutUrl: 'https://www.asaas.com/c/checkout-servarclin',
+      checkoutUrl: 'https://servarclin.com.br/checkout?plan=pro',
     },
     {
       slug: 'personalizado',
       nome: 'ServarClin Max',
-      preco: 997,
+      preco: 1099,
       publico: 'Centros multidisciplinares e redes de clínicas',
-      medicosLimite: 99, // Ilimitado
+      medicosLimite: 10,
       mensagensLimite: 999999, // Ilimitado
       features: [
         'Tudo do Intermediário',
@@ -140,7 +140,7 @@ export const PRICING = {
         'Relatórios de BI e Conversão Avançados',
       ],
       destaque: false,
-      checkoutUrl: 'https://www.asaas.com/c/checkout-servarclin',
+      checkoutUrl: 'https://servarclin.com.br/checkout?plan=premium',
     },
   ],
   addons: [
