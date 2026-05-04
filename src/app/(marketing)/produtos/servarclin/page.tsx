@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Reveal } from '@/components/motion/Reveal';
 import { SITE, PRICING } from '@/lib/site';
+import { Pricing } from '@/components/marketing/Pricing';
 
 export const metadata: Metadata = {
   title: 'ServarClin — Secretária IA para Clínicas no WhatsApp',
@@ -283,87 +284,7 @@ export default function ServarClinMarketingPage() {
       </section>
 
       {/* ── PRICING ──────────────────────────────────────────────── */}
-      <section className="py-24 lg:py-32 px-6 lg:px-8" id="planos">
-        <div className="max-w-page-xl mx-auto">
-          <Reveal variant="up">
-            <div className="text-center mb-14">
-              <p className="font-mono uppercase tracking-[0.18em] text-brand-cyan-600 text-xs font-bold mb-4">
-                Planos
-              </p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-brand-teal-800 tracking-tight mb-4">
-                Preço por clínica — não por médico.
-              </h2>
-              <p className="text-brand-neutral-muted">
-                Você paga pela clínica. Não importa se tem 1 ou 10 médicos atendendo.
-              </p>
-            </div>
-          </Reveal>
-
-          <div className="grid md:grid-cols-3 gap-5 mb-8">
-            {PRICING.tiers.map((p, i) => (
-              <Reveal key={p.slug} variant="up" delay={i * 100}>
-                <div
-                  className={`rounded-2xl border p-8 flex flex-col relative ${
-                    p.destaque
-                      ? 'border-brand-teal-800 shadow-large lg:scale-[1.03] z-10 bg-white'
-                      : 'border-brand-neutral-border bg-white'
-                  }`}
-                >
-                  {p.destaque && (
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-brand-teal-800 text-brand-cyan-400 text-xs font-bold uppercase tracking-wider">
-                      Mais escolhido
-                    </div>
-                  )}
-                  <h3 className="text-lg font-bold text-brand-teal-800 mb-1">{p.nome}</h3>
-                  <p className="text-xs text-brand-neutral-muted mb-5">{p.publico}</p>
-                  <div className="flex flex-col gap-1 mb-6 pb-6 border-b border-brand-neutral-border">
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold text-brand-teal-800">
-                        R$ {Math.round(p.preco * 0.9)}
-                      </span>
-                      <span className="text-sm text-brand-neutral-muted">/mês</span>
-                    </div>
-                    <p className="text-[10px] font-bold text-brand-cyan-600 uppercase tracking-widest">No Plano Anual (10% OFF)</p>
-                    <p className="text-[10px] text-brand-neutral-muted mt-2 font-medium">
-                      * Isenção de instalação no cartão
-                    </p>
-                  </div>
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {p.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm text-brand-neutral-muted">
-                        <CheckCircle2 className="w-4 h-4 text-brand-cyan-500 flex-shrink-0 mt-0.5" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={p.checkoutUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`block text-center rounded-full px-6 py-3 font-semibold transition-all ${
-                      p.destaque
-                        ? 'bg-brand-teal-800 text-white hover:bg-brand-teal-700'
-                        : 'border-2 border-brand-teal-800 text-brand-teal-800 hover:bg-brand-teal-800 hover:text-white'
-                    }`}
-                  >
-                    Assinar {p.nome.replace('ServarClin ', '')}
-                  </Link>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* Garantia */}
-          <Reveal variant="fade">
-            <div className="text-center p-6 rounded-2xl border-2 border-brand-cyan-400 bg-brand-cyan-50 max-w-xl mx-auto">
-              <p className="font-bold text-brand-teal-800 mb-1">🛡️ Garantia incondicional de 30 dias</p>
-              <p className="text-sm text-brand-neutral-muted">
-                Não funcionou para sua clínica? Devolvemos 100% do valor da mensalidade. Sem perguntas, sem letrinha miúda.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <Pricing />
 
       {/* ── FINAL CTA ────────────────────────────────────────────── */}
       <section className="py-20 bg-brand-teal-800 relative overflow-hidden">

@@ -9,26 +9,20 @@ import { cn } from '@/lib/cn';
 
 const ContactSchema = z.object({
   nome: z.string().min(2, 'Diga seu nome'),
+  email: z.string().email('E-mail inválido'),
   telefone: z.string().min(10, 'Telefone com DDD, por favor'),
   cidade: z.string().min(2, 'Em qual cidade fica a clínica?'),
-  medicos: z.string().optional(),
+  medicos: z.string().min(1, 'Selecione a quantidade de médicos'),
   mensagem: z.string().optional(),
-  // honeypot
-  website: z.string().max(0, 'Bot detectado'),
+  website: z.string().max(0, 'Bot detectado'), // honeypot
 });
 
 type FieldErrors = Partial<Record<keyof z.infer<typeof ContactSchema>, string>>;
 
-/**
- * Form de contato — versão Dia 3.
- * Validação local com Zod + honeypot.
- *
- * TODO Dia 4: integrar /api/contato com Resend + Z-API + Google Sheets.
- * Por enquanto simula sucesso com toast.
- */
 export function ContactForm() {
   const params = useSearchParams();
   const ref = params.get('ref') ?? '';
+  const cidadeSlug = params.get('cidade') ?? '';
 
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitting, setSubmitting] = useState(false);
@@ -37,8 +31,9 @@ export function ContactForm() {
     setSubmitting(true);
     setErrors({});
 
-    const data = {
+    const raw = {
       nome: String(formData.get('nome') ?? ''),
+      email: String(formData.get('email') ?? ''),
       telefone: String(formData.get('telefone') ?? ''),
       cidade: String(formData.get('cidade') ?? ''),
       medicos: String(formData.get('medicos') ?? ''),
@@ -46,7 +41,7 @@ export function ContactForm() {
       website: String(formData.get('website') ?? ''),
     };
 
-    const result = ContactSchema.safeParse(data);
+    const result = ContactSchema.safeParse(raw);
     if (!result.success) {
       const fieldErrors: FieldErrors = {};
       for (const issue of result.error.issues) {
@@ -58,16 +53,29 @@ export function ContactForm() {
       return;
     }
 
-    // TODO Dia 4: POST /api/contato (Resend + Z-API + Sheets)
-    // Simula envio
-    await new Promise((r) => setTimeout(r, 800));
+    try {
+      const res = await fetch('/api/contato', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...result.data, ref, cidadeSlug }),
+      });
 
-    toast.success('Solicitação recebida!', {
-      description: 'Erick Henrique analisa o perfil da sua clínica e entra em contato em até 24h pelo WhatsApp.',
-      duration: 6000,
-    });
-    setSubmitting(false);
-    (document.getElementById('contact-form') as HTMLFormElement)?.reset();
+      if (!res.ok) throw new Error('server_error');
+
+      toast.success('Solicitação recebida!', {
+        description:
+          'Erick Henrique analisa o perfil da sua clínica e entra em contato em até 24h pelo WhatsApp.',
+        duration: 6000,
+      });
+      (document.getElementById('contact-form') as HTMLFormElement)?.reset();
+    } catch {
+      toast.error('Não conseguimos enviar agora.', {
+        description: 'Tente pelo WhatsApp no botão abaixo ou mande um e-mail para ' + 'Servaxhome@gmail.com',
+        duration: 8000,
+      });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -98,6 +106,16 @@ export function ContactForm() {
       />
 
       <Field
+        label="E-mail"
+        name="email"
+        type="email"
+        placeholder="seuemail@clinica.com.br"
+        autoComplete="email"
+        required
+        error={errors.email}
+      />
+
+      <Field
         label="WhatsApp"
         name="telefone"
         type="tel"
@@ -119,20 +137,27 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="medicos" className="block text-sm font-medium text-brand-teal-800 mb-2">
-          Quantos médicos atendem? <span className="font-normal text-brand-neutral-light">(opcional)</span>
+          Quantos médicos atendem? <span className="text-brand-cyan-600">*</span>
         </label>
         <select
           id="medicos"
           name="medicos"
-          className="w-full rounded-xl border border-border bg-surface px-4 py-3 text-brand-fg focus:outline-none focus:ring-4 focus:ring-[color:var(--color-ring)] focus:border-brand-teal-800 transition-all"
+          required
+          className={cn(
+            'w-full rounded-xl border bg-surface px-4 py-3 text-brand-fg focus:outline-none focus:ring-4 focus:ring-[color:var(--color-ring)] focus:border-brand-teal-800 transition-all',
+            errors.medicos ? 'border-red-400' : 'border-border',
+          )}
         >
-          <option value="">Não sei agora</option>
+          <option value="">Selecione...</option>
           <option value="1">1 médico</option>
           <option value="2-3">2 a 3 médicos</option>
           <option value="4-6">4 a 6 médicos</option>
           <option value="7-10">7 a 10 médicos</option>
           <option value="11+">Mais de 10</option>
         </select>
+        {errors.medicos && (
+          <p role="alert" className="mt-2 text-sm text-red-600">{errors.medicos}</p>
+        )}
       </div>
 
       <div>

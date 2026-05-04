@@ -10,7 +10,6 @@ const NAV_ITEMS = [
   { label: 'Quem somos', href: '/quem-somos' },
   { label: 'Produtos', href: '/produtos' },
   { label: 'Planos', href: '/compras' },
-  { label: 'Blog', href: '/blog' },
 ] as const;
 
 /**

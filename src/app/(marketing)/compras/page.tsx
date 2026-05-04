@@ -15,7 +15,9 @@ import {
   Receipt,
 } from 'lucide-react';
 import { Reveal } from '@/components/motion/Reveal';
+import { WhatsAppLink } from '@/components/marketing/WhatsAppLink';
 import { SITE, PRICING } from '@/lib/site';
+import { Pricing } from '@/components/marketing/Pricing';
 
 export const metadata: Metadata = {
   title: 'Planos e Preços — ServarClin',
@@ -104,100 +106,8 @@ export default function ComprasPage() {
         </div>
       </section>
 
-      {/* ── PRICING CARDS ────────────────────────────────────────── */}
-      <section className="px-6 -mt-12 pb-32 lg:px-12 relative z-20">
-        <div className="max-w-page-xl mx-auto grid md:grid-cols-3 gap-8">
-          {PRICING.tiers.map((tier, i) => (
-            <Reveal key={tier.slug} variant="up" delay={i * 100}>
-              <Link
-                href={tier.checkoutUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group block h-full rounded-[2rem] border p-8 flex flex-col relative transition-all duration-300 hover:-translate-y-2 hover:shadow-large cursor-pointer ${
-                  tier.destaque
-                    ? 'border-brand-teal-800 shadow-large bg-white scale-105 z-10'
-                    : 'border-brand-neutral-border bg-white shadow-soft'
-                }`}
-              >
-                {tier.destaque && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-brand-teal-800 text-brand-cyan-400 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5 z-20">
-                    <Sparkles className="w-3 h-3" /> Mais escolhido
-                  </div>
-                )}
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold text-brand-teal-800 mb-1">{tier.nome}</h3>
-                  <p className="text-sm text-brand-neutral-muted">{tier.publico}</p>
-                </div>
-                <div className="mb-4 flex flex-col gap-2">
-                  <div className="flex flex-col">
-                    <span className="text-sm text-brand-neutral-light line-through decoration-brand-neutral-light/50 font-medium mb-0.5">
-                      {formatBRL(tier.preco)}
-                    </span>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-4xl font-bold text-brand-teal-800">{formatBRL(tier.preco * 0.9)}</span>
-                      <span className="text-sm text-brand-neutral-muted">/mês</span>
-                    </div>
-                  </div>
-                  <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-brand-cyan-50 text-brand-cyan-700 text-[10px] font-black uppercase tracking-[0.15em] w-fit border border-brand-cyan-100">
-                    <Zap className="w-3.5 h-3.5 fill-current" /> 10% de Desconto Anual
-                  </div>
-                </div>
-                <div className="mb-6 flex flex-col gap-3 p-3 rounded-2xl bg-brand-cyan-50/50 border border-brand-cyan-100">
-                  <div className="flex items-center gap-2.5 text-xs font-bold text-brand-cyan-700">
-                    <Sparkles className="w-4 h-4" />
-                    <span>ADESÃO GRÁTIS (Economize R$ {PRICING.setup})</span>
-                  </div>
-                  <div className="flex items-center gap-2.5 text-[11px] font-medium text-brand-neutral-muted">
-                    <Check className="w-4 h-4 text-emerald-500" />
-                    <span>Pagamento via Cartão ou Boleto</span>
-                  </div>
-                </div>
-                <ul className="space-y-4 mb-10 flex-1">
-                  {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm text-brand-neutral-muted leading-tight">
-                      <Check className="w-4 h-4 text-brand-cyan-500 flex-shrink-0 mt-0.5" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <div
-                  className={`block w-full py-4 rounded-full font-bold text-center transition-all group-hover:scale-[1.02] ${
-                    tier.destaque
-                      ? 'bg-brand-teal-800 text-white shadow-cta hover:bg-brand-teal-700'
-                      : 'border-2 border-brand-teal-800 text-brand-teal-800 hover:bg-brand-teal-800 hover:text-white'
-                  }`}
-                >
-                  Assinar {tier.nome.replace('ServarClin ', '')}
-                </div>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* Setup & Guarantee */}
-        <div className="max-w-page-xl mx-auto mt-12 grid md:grid-cols-2 gap-6">
-          <Reveal variant="up" className="md:col-span-2">
-            <div className="p-8 rounded-[2rem] border-2 border-brand-cyan-400 bg-brand-cyan-50/50 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden shadow-soft hover:shadow-medium transition-all">
-              <div className="absolute -right-8 -bottom-8 opacity-5">
-                <ShieldCheck className="w-48 h-48 text-brand-cyan-600" />
-              </div>
-              <div className="w-20 h-20 rounded-3xl bg-brand-cyan-100 flex items-center justify-center text-brand-cyan-600 flex-shrink-0 shadow-sm relative z-10">
-                <ShieldCheck className="w-10 h-10" />
-              </div>
-              <div className="relative z-10 text-center md:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan-100 text-brand-cyan-700 text-[10px] font-black uppercase tracking-widest mb-3">
-                  Risco Zero para sua Clínica
-                </div>
-                <h4 className="text-2xl font-bold text-brand-teal-800 mb-2">Garantia Total de 30 dias</h4>
-                <p className="text-brand-neutral-muted max-w-2xl">
-                  Se por qualquer motivo você achar que o ServarClin não é para você, devolvemos 100% da sua mensalidade. O nosso compromisso é com o seu resultado e a sua satisfação total.
-                </p>
-              </div>
-            </div>
-          </Reveal>
-
-        </div>
-      </section>
+      {/* ── PRICING ──────────────────────────────────────────────── */}
+      <Pricing />
 
       {/* ── HOW IT WORKS / ONBOARDING ──────────────────────────── */}
       <section className="py-24 bg-white border-y border-brand-neutral-border px-6 lg:px-8">
@@ -273,13 +183,11 @@ export default function ComprasPage() {
               >
                 Ativar atendimento 24h
               </Link>
-              <Link
-                href={`https://wa.me/${SITE.whatsapp}`}
-                target="_blank"
+              <WhatsAppLink
                 className="w-full sm:w-auto px-10 py-5 rounded-full border-2 border-white/30 text-white font-bold hover:bg-white/10 transition-all"
               >
                 Falar com consultor
-              </Link>
+              </WhatsAppLink>
             </div>
             <p className="mt-6 text-white/40 text-xs">
               Implantação assistida inclusa · Atendimento humano de suporte

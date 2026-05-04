@@ -1,8 +1,12 @@
+'use client';
+
 import { SITE } from '@/lib/site';
+import { trackWhatsAppClick } from '@/lib/gtag';
 
 /**
  * Botão flutuante de WhatsApp, fixo bottom-right em todas as páginas.
  * Abre wa.me com mensagem pré-preenchida.
+ * Dispara conversão Google Ads ao clicar.
  */
 export function WhatsAppFab() {
   const phone = SITE.whatsapp.replace(/\D/g, '');
@@ -14,6 +18,7 @@ export function WhatsAppFab() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={trackWhatsAppClick}
       aria-label="Falar no WhatsApp"
       className="fixed bottom-6 right-6 z-40 group flex items-center gap-3 rounded-full bg-[#25D366] pl-4 pr-5 py-3 shadow-cta-accent hover:scale-105 hover:shadow-large transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40"
     >

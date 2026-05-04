@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { Phone, Mail, MapPin, Clock, MessageCircle, Bot, User } from 'lucide-react';
 import { ContactForm } from '@/components/marketing/ContactForm';
+import { WhatsAppLink } from '@/components/marketing/WhatsAppLink';
 import { Reveal } from '@/components/motion/Reveal';
 import { SITE } from '@/lib/site';
 
@@ -136,14 +137,11 @@ export default function ContatoPage() {
                     <Phone className="w-5 h-5 text-brand-cyan-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-mono uppercase tracking-wider text-xs text-brand-neutral-light mb-1">WhatsApp</p>
-                      <a
-                        href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <WhatsAppLink
                         className="text-brand-teal-800 font-semibold hover:underline"
                       >
                         Falar com o fundador
-                      </a>
+                      </WhatsAppLink>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
@@ -216,15 +214,12 @@ export default function ContatoPage() {
             <p className="text-lg text-white/80 leading-relaxed mb-8 max-w-md mx-auto">
               Manda uma mensagem direta para Erick Henrique. Ele analisa o perfil da sua clínica e te chama para a demonstração.
             </p>
-            <Link
-              href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(SITE.whatsappText)}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <WhatsAppLink
               className="inline-flex items-center gap-3 rounded-full bg-[#25D366] px-8 py-4 font-semibold text-white shadow-cta-accent hover:bg-[#1da851] hover:scale-105 transition-all"
             >
               <MessageCircle className="w-5 h-5" />
               Falar com o fundador no WhatsApp
-            </Link>
+            </WhatsAppLink>
             <p className="mt-4 text-sm text-white/50">
               Resposta em até 24h · Demonstração gratuita · Sem compromisso
             </p>

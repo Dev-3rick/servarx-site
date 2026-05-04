@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Home, Search, MessageCircle } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import { SITE } from '@/lib/site';
+import { WhatsAppLink } from '@/components/marketing/WhatsAppLink';
 
 export default function NotFound() {
   return (
@@ -55,14 +56,11 @@ export default function NotFound() {
             <p className="text-sm text-brand-neutral-muted mb-3">
               Procurando algo específico?
             </p>
-            <a
-              href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, '')}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <WhatsAppLink
               className="inline-flex items-center gap-2 text-brand-teal-800 font-semibold hover:underline"
             >
               <MessageCircle className="w-4 h-4" /> Chama a gente no WhatsApp
-            </a>
+            </WhatsAppLink>
           </div>
         </div>
       </main>
